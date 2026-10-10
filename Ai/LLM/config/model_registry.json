@@ -25,7 +25,7 @@
       "compatibility_passed": true
     },
     "natural-v2-smoke": {
-      "status": "Candidate",
+      "status": "Rejected",
       "adapter_path": "runs/natural-v2-smoke-20261010/checkpoint-epoch-1",
       "prompt_profile": "natural-v1",
       "training_status": "completed",
@@ -33,7 +33,11 @@
       "training_git_commit": "6c6484c6368c76b066715ca44d2335f1b8aeb080",
       "human_review": false,
       "production_approved": false,
-      "note": "Tiny feasibility run. Legacy prompt SFT; Character Lab transfer is unverified until dialogue evaluation."
+      "note": "Tiny feasibility run. Legacy prompt SFT; Character Lab transfer is unverified until dialogue evaluation.",
+      "evaluation_path": "experiments/results/natural-v2.json",
+      "decision": "No overall quality improvement demonstrated; unsupported assumptions remain",
+      "compatibility_passed": false,
+      "analysis_adapter_coverage": "Analyzer checks used preserved baseline, not trained candidate"
     }
   }
 }
