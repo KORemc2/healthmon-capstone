@@ -9,7 +9,7 @@
 - 원본/Fork `main`: `47b0c308629ce4bc1b9f78430d13007f052ce31b`.
 - Clone: `E:\qwen-llm\HEALTHMON`; LLM: `Ai/LLM`.
 - 기존 `E:\qwen-llm`은 Git 저장소가 아니었다. Fork의 `Ai/LLM`은 `.gitkeep`만 있었으므로 기존 구현을 별도 경로로 가져왔다. 기존 파일을 덮어쓰지 않았다.
-- `origin`은 Fork, `upstream`은 원본이다. upstream의 Push URL은 `https://invalid.invalid/READ_ONLY_UPSTREAM`으로 설정했다.
+- 현재 원격은 사용자 Fork인 `origin`만 있다. 사용자 최신 지시에 따라 `upstream` 연결은 제거했고, `remote.pushDefault=origin`으로 설정했다. 원본 전송은 나중에 사용자가 명시적으로 요청할 때만 진행한다.
 - 초기 Push는 공개 파일 검증 문제로 자동 승인 검토에서 차단되었다. 실제 로컬 비밀값과 key 패턴 검사, 합성 데이터 출처 검증 후 재시도 승인을 받았다. Windows의 여러 자격증명 중 `credential.https://github.com.username=KORemc2`를 지정해 실제 Push를 완료했다. 이 선택은 해당 Clone의 Git 설정에 저장했다.
 
 ## 복구 기준선
@@ -83,4 +83,8 @@ git worktree add E:\qwen-llm\HEALTHMON-baseline baseline/llm-local-20261010
 
 해당 worktree의 `Ai/LLM`에 모델·어댑터·환경 경로를 연결해 실행한다. 모델 복구는 백업의 같은 상대 경로를 새 위치에 복사하고 `manifest.json`의 SHA256과 대조한다. DB는 백업 복사본을 새 pgdata 경로에서 시작하고 복구한 로컬 자격증명을 사용한다. 실행 중인 기존 pgdata를 덮어쓰지 않는다.
 
-Fork의 baseline 브랜치·태그 및 `feat/llm-natural-dialogue`, `exp/llm/natural-v1/v2/v3`에 실제 Push를 수행했다. 실험 가중치는 로컬에만 보존한다. 원본에 직접 Push하거나 자동 Merge하지 않았다. Draft PR 주소와 최종 V2 결과는 최종 실행 요약에서 추가 기록한다.
+Fork의 baseline 브랜치·태그 및 `feat/llm-natural-dialogue`, `exp/llm/natural-v1/v2/v3`에 실제 Push를 수행했다. 실험 가중치는 로컬에만 보존한다. 원본에 직접 Push하거나 자동 Merge하지 않았다. 앞서 생성한 원본 Draft PR #2는 사용자 지시에 따라 2026-10-10 18:10 KST에 닫았다. REST 확인 결과 `state=closed`, `merged=false`다. GitHub에는 닫힌 PR 이력이 남는다. 채팅의 PR 첨부와 임시 생성 스크립트는 제거했다. 이후 작업·커밋·Push는 사용자 Fork에만 한정하며, 원본 PR 생성은 현재 수행 범위에서 제외한다.
+
+브라우저에서 `http://127.0.0.1:8002/`를 실제 실행하고 Baseline/V2의 동일 Memory 비교도 확인했다. 양쪽 모두 수영 선호를 답하고 fallback 없이 각각1회 생성했으며, 별도 로컬 평가 파일이 저장됐다. 사람 평가 점수는 제출하지 않았다. 서버는 개발 비교를 위해 실행 상태로 두었다. 기존 베타 DB와 분리된 테스트 DB도 실행 중이다.
+
+데이터와 원시 평가 JSON은 Git의 줄바꿈 변환을 막아 저장 시 SHA256과 Clone 후 바이트가 일치하게 했다. `scripts/check_experiment_integrity.py`로 기존 최신 데이터3파일·새 학습/검증2파일·고정 사례1파일을 실제 확인했다. 저장소 추적파일의 실제 로컬 비밀값·키 패턴 검사도 0건이었다.

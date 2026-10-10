@@ -1,0 +1,11 @@
+#!/bin/sh
+# This checkout publishes only to the owner's existing fork.
+case "$2" in
+  https://github.com/KORemc2/healthmon-capstone.git|https://github.com/KORemc2/healthmon-capstone|git@github.com:KORemc2/healthmon-capstone.git)
+    exit 0
+    ;;
+  *)
+    echo "Push blocked: this checkout is restricted to KORemc2/healthmon-capstone." >&2
+    exit 1
+    ;;
+esac
