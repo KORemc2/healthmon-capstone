@@ -1,0 +1,254 @@
+{
+  "training_config": {
+    "framework": "transformers+peft",
+    "model": {
+      "repo": "Qwen/Qwen3.5-9B",
+      "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+      "path": "E:\\qwen-llm\\models\\qwen3.5-9b"
+    },
+    "bf16": true,
+    "quantization": null,
+    "rank": 8,
+    "alpha": 32,
+    "batch": 1,
+    "grad_accum": 8,
+    "lr": 2e-05,
+    "epochs": 1,
+    "max_length": 3072,
+    "trainable": 21639168,
+    "data_manifest": {
+      "version": "external_sft_tone-v1",
+      "sha256": {
+        "train": "bdb4336fff34bbc4a40b5717365e08aee705fa9922d961d4904b3ea14bc91d22",
+        "validation": "ebeac2bd2c69777ac51ef523dff660c98dad98db1d7147ad478d15083e5e0027",
+        "test": "c38c090959633a2bcf73c363e92d1e0e8271da554f99c438e86f20ffd9822288"
+      },
+      "splits": {
+        "train": {
+          "count": 40,
+          "sha256": "bdb4336fff34bbc4a40b5717365e08aee705fa9922d961d4904b3ea14bc91d22",
+          "token_min": 1240,
+          "token_max": 2423,
+          "groups": [
+            "chatbot-030adb90a7e1768a10f1919b2dab0319cfa3e3199c5927bc5123782815f3455f",
+            "chatbot-077c34d089d49c4e0c1312110411d868a9d72804eb4d4df025b0ba9f52305af5",
+            "chatbot-0ad7fc3f63e9960c8cfbc50e56a94b72dabe6bdee0be0437330dc43b77d42f36",
+            "chatbot-147d54a763a13d8c4d3e994671c124267a6eb9978f227fbf42ecd69a0f08c6f9",
+            "chatbot-19be510ac88bf4ac3f54c835a6ec7eb9573081b7b4b9730202d1325e662a84da",
+            "chatbot-1d00d608be9e3768b41a1732f388affa6324f4dc11e90dd92eeeaf57aff34d40",
+            "chatbot-1ed59c49b948a0f2533f3ecb5b094c0946cdbe942be7a7151a6acf2bbb1ffa12",
+            "chatbot-24c23909f27984d7a5656b20dbb1becf860719616a72ffd8ba63b63c9a89fa83",
+            "chatbot-322886d29213470fce68256276943c1ec4d135e227a386070cc00b107fa86c1a",
+            "chatbot-37ea800502cbfe9597f42a8ba5332b2ade39e72d453afc65db7372e351d589ff",
+            "chatbot-426dd34afe8ae94a03501949aaba585f5a2bebdecff6bed8f0d50a26e590f6b2",
+            "chatbot-43cd27802a516aa71f9187a78544d2b1c99968eb1ae7a759e994252b6d1e79b3",
+            "chatbot-5bcbdcf4f5fbe209fa89b01f97b6e445de1e4acbbc1bcd255b2065ba6ad1df77",
+            "chatbot-5e4be0a90e604ef4c95a3e17499af4782d70e2f75e049116337049619050ee15",
+            "chatbot-6cfd2257ee73a53ad953d931beec1a8ac0fa57fb03a350b263d14591b17cfe37",
+            "chatbot-7642dfea0809d1b6055be8320b91b6f2abf8b952481f3cfbc379ecedd1316028",
+            "chatbot-76597329ecc5a14e6fb53263b044b153bf08a1776602aa7090a6a26184d80c51",
+            "chatbot-7a77dbe147be9bd9d127eadc2a8343839bdfafa9bd526bc1bdbf6bd7f7e7b10c",
+            "chatbot-7e17f76de2c9d44c1e144c26bb028319e41f53f05fd4f8c47f7bcf1f9132a73f",
+            "chatbot-7e528b11ea0f8f8492ff91d269491e7053c1b2f70f867533f519d580e3d94631",
+            "chatbot-85d9e8c7fee8a6ce7fb0b1f5b84a98967a2a80062c627567508bd0816fcadf01",
+            "chatbot-86e417c0e60a1245ab7ae8431a1319ea621fa05d947c9a4eaa59edbbf747303d",
+            "chatbot-90c06be59a341c4c82d330d21a8dcf6e02e47d76601a6ddd69917380cfd29f66",
+            "chatbot-9375a70c093905c64bab9d5e0729e8ebd2b7630f5253442cab29ba30638dca8a",
+            "chatbot-93f3d04dcc3e7b2492e2792a3995f672f21b92bfedefa625dd5eb09b13ad4a9d",
+            "chatbot-9fd026850ba7ad5f060064b12a38044f1414129d76a6b9c79a6a09b7b2ca1caf",
+            "chatbot-a5fec3db9953feec1bda6d7fd3205870f5273746740654d0bd7a221115ccd5d0",
+            "chatbot-b5f6b8116c7ef2a16d2ab72763e8ed07152e8fc17a21ab3d4ff972d516913ede",
+            "chatbot-c52bab828b34bf3fafbde1ee536dc9a7615f147cf03efea928ebef1ec630c368",
+            "chatbot-c5fd1fe2b0d6e353ad2147b4cb74b04b831f85e96c585852c9d91a9a440d96ed",
+            "chatbot-dff00ff50fd6109a215f2ba41c23e6c07b5c0a3bb2df5366e6b1aa858e060c54",
+            "chatbot-f5185fcb6ebde926a4d198840e30daaf29200ac8b5f2ef36c654b72dc109f162",
+            "identity",
+            "memory_present",
+            "state_printer",
+            "style_pair"
+          ],
+          "sources": {
+            "songys/Chatbot_data": 32,
+            "identity": 2,
+            "style_pair": 3,
+            "memory_present": 1,
+            "state_printer": 2
+          }
+        },
+        "validation": {
+          "count": 8,
+          "sha256": "ebeac2bd2c69777ac51ef523dff660c98dad98db1d7147ad478d15083e5e0027",
+          "token_min": 2400,
+          "token_max": 2410,
+          "groups": [
+            "chatbot-00c0794205ba8ca1ab44ebc7eb22abf23a5a7421db22086c5160bd3eb7a44c46",
+            "chatbot-3c56d1b7f420bf33ef1a5fe07391301afd5b28a2defb7e840d77260a65e110f6",
+            "chatbot-518b661b0f2f7e01b50ead8f8562abf6312a2408fc1285d493fe4cbb255887a8",
+            "chatbot-71ed9b49b76337fc07a5495fee78bdfa1f79f2186dd29febf8e9df2af04a8f28",
+            "chatbot-8a6185670127615da4a91222a51c418d6d099fa61d238614c6be565dac2ed922",
+            "chatbot-a633a5bfc523103dc564f7c943b401454c2af11d2ff36fbe1056367e84499bad",
+            "chatbot-bb25d54082ede68173bc71b60fc3c045b29e66bedbed21f7d88d28b40199df8d",
+            "chatbot-d213298b36658060537034dd96a0db427048b36fed73d170ddb28abf7b05564a"
+          ],
+          "sources": {
+            "songys/Chatbot_data": 8
+          }
+        },
+        "test": {
+          "count": 8,
+          "sha256": "c38c090959633a2bcf73c363e92d1e0e8271da554f99c438e86f20ffd9822288",
+          "token_min": 2398,
+          "token_max": 2411,
+          "groups": [
+            "chatbot-01b6b5fe21a226531f6d1026d10fd108cf3e0d90403f6dfd5648db4295d72171",
+            "chatbot-1474fedd5ccb74cfd845e8528400d762b2b3f8c935c8fbf65d28f117895f5744",
+            "chatbot-2478af91938d10f3718e2899de0b818e5c9ea83cb42494aa6d9531c647d3d8ed",
+            "chatbot-399cbbd5a7730ce670c31107e6e8296975050db152f7edf4ba2b08985703aa79",
+            "chatbot-792e3c708f632e961b6aa8447c596324f7c0a3af992e6f1f877f671d7975b159",
+            "chatbot-9e4e9d82bd84d1ef4b115cd5edf8cb030ab17aaf6276820416f6f3200f8f3c29",
+            "chatbot-e866aa622a9ed4da3e7b22dd707c29d67b535bcd0e1ae212bf9ad77cf128fa96",
+            "chatbot-fbf4418b026481eaa97b0771c49b2f45f44dafc5c2de430f1d732853404dc38f"
+          ],
+          "sources": {
+            "songys/Chatbot_data": 8
+          }
+        }
+      },
+      "prompt_kind": "character",
+      "profile": "natural-v1",
+      "human_review": false,
+      "baseline_retention_count": 8,
+      "no_truncation": true,
+      "group_leakage": false,
+      "training_scope": "noncommercial local research",
+      "sources_manifest": "experiments/external-dialogue-sources.json"
+    },
+    "smoke": true,
+    "data": "data/external_sft_tone-v1",
+    "init_adapter": "runs/expanded-20260929/checkpoint-epoch-1",
+    "runtime_guidance": true,
+    "shuffle_seed": 42,
+    "prompt_profile": "natural-v1",
+    "prompt_kind": "character",
+    "assistant_logits_only": true,
+    "git_commit": "0007351a01816fed10bc6012c3d45b06859d1d91",
+    "base_revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a"
+  },
+  "events": [
+    {
+      "event": "load_start",
+      "time": 1791624917.7207909,
+      "train_count": 8,
+      "validation_count": 2
+    },
+    {
+      "event": "loaded",
+      "time": 1791624937.3548024,
+      "trainable": 21639168,
+      "allocated_gib": 17.607831478118896
+    },
+    {
+      "event": "backward",
+      "time": 1791624945.3899717,
+      "epoch": 1,
+      "sample": 1,
+      "loss": 1.4255748987197876,
+      "peak_allocated_gib": 20.392966270446777,
+      "peak_reserved_gib": 20.8515625,
+      "device_used_total_mib": "23034, 24576"
+    },
+    {
+      "event": "backward",
+      "time": 1791624952.536112,
+      "epoch": 1,
+      "sample": 2,
+      "loss": 0.9483925700187683,
+      "peak_allocated_gib": 20.47221851348877,
+      "peak_reserved_gib": 20.8515625,
+      "device_used_total_mib": "23035, 24576"
+    },
+    {
+      "event": "backward",
+      "time": 1791624959.8722985,
+      "epoch": 1,
+      "sample": 3,
+      "loss": 0.997164785861969,
+      "peak_allocated_gib": 20.47221851348877,
+      "peak_reserved_gib": 20.8515625,
+      "device_used_total_mib": "23070, 24576"
+    },
+    {
+      "event": "backward",
+      "time": 1791624967.193317,
+      "epoch": 1,
+      "sample": 4,
+      "loss": 0.8295654058456421,
+      "peak_allocated_gib": 20.47221851348877,
+      "peak_reserved_gib": 20.8515625,
+      "device_used_total_mib": "23088, 24576"
+    },
+    {
+      "event": "backward",
+      "time": 1791624974.6354122,
+      "epoch": 1,
+      "sample": 5,
+      "loss": 1.4095656871795654,
+      "peak_allocated_gib": 20.472991943359375,
+      "peak_reserved_gib": 20.8515625,
+      "device_used_total_mib": "23085, 24576"
+    },
+    {
+      "event": "backward",
+      "time": 1791624981.7159908,
+      "epoch": 1,
+      "sample": 6,
+      "loss": 0.6674085855484009,
+      "peak_allocated_gib": 20.472991943359375,
+      "peak_reserved_gib": 20.8515625,
+      "device_used_total_mib": "23034, 24576"
+    },
+    {
+      "event": "backward",
+      "time": 1791624988.8468795,
+      "epoch": 1,
+      "sample": 7,
+      "loss": 1.190657615661621,
+      "peak_allocated_gib": 20.47652006149292,
+      "peak_reserved_gib": 20.8515625,
+      "device_used_total_mib": "23150, 24576"
+    },
+    {
+      "event": "backward",
+      "time": 1791624995.912869,
+      "epoch": 1,
+      "sample": 8,
+      "loss": 1.1859886646270752,
+      "peak_allocated_gib": 20.47652006149292,
+      "peak_reserved_gib": 20.8515625,
+      "device_used_total_mib": "23084, 24576"
+    },
+    {
+      "event": "optimizer_update",
+      "time": 1791624996.0917597,
+      "step": 1,
+      "gradient_norm": 4.306878566741943
+    },
+    {
+      "event": "validation",
+      "time": 1791624999.5108633,
+      "epoch": 1,
+      "loss": 0.8835637271404266,
+      "checkpoint": "E:\\qwen-llm\\HEALTHMON\\Ai\\LLM\\runs\\dialogue-sanity-efficient-20261010\\checkpoint-epoch-1"
+    },
+    {
+      "event": "complete",
+      "time": 1791625003.213936,
+      "optimizer_steps": 1,
+      "reload_validation_loss": 0.8835637271404266,
+      "peak_allocated_gib": 20.47652006149292,
+      "peak_reserved_gib": 20.90234375
+    }
+  ],
+  "training_completed": true,
+  "serving_model_selected": false
+}

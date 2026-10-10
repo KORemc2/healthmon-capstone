@@ -18,6 +18,8 @@
 
 각 학습셋은 새 자료32건과 기존 성격·정체성·Memory 예제8건, 검증8건, 시험8건이다. 이는 실행 가능성을 확인하는 작은 실험이며 완전 학습·성능 입증을 의미하지 않는다. Character 응답에는 실제 serving의 `persona_messages`, 분류에는 별도 Analyzer 프롬프트를 사용한다. 기존 학습기의 기본 legacy 동작은 유지한다.
 
+처음 전체 vocabulary logit을 만든 점검은 GPU 24,245/24,576MiB 상태에서 첫 backward가 끝나지 않아 중단했다. 실패 기록을 보존했다. 새 `--assistant-logits-only` 옵션은 정답 토큰 바로 앞의 logit만 계산한다. 기존 masked causal loss와 손실값·기울기가 같은지 테스트했다. 이후 실제 BF16 8건/검증2건 점검은 optimizer1회, 저장·재로드 검증 손실 `0.8835637271404266`, 최대 할당20.477GiB로 성공했다. 이전 어댑터와 학습 기본값은 변경하지 않았다.
+
 | ID / 브랜치 | 새 자료32건 |
 |---|---|
 | tone-v1 / exp/llm/tone-v1 | 일상 한국어 문답 |
