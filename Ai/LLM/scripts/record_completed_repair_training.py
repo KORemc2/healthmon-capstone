@@ -50,6 +50,18 @@ def main():
     temporary = path.with_suffix('.tmp')
     temporary.write_text(json.dumps(experiment, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     temporary.replace(path)
+    status_path = ROOT / 'NATURAL_DIALOGUE_STATUS.json'
+    status = json.loads(status_path.read_text(encoding='utf-8'))
+    status['experiments']['repair-v5'].update(
+        training_status='completed', epochs=experiment['completed_epochs'],
+        optimizer_updates=experiment['optimizer_steps'],
+        training_git_commit=config['git_commit'],
+        checkpoint_path=experiment['selected_checkpoint'],
+        adapter_sha256=experiment['selected_adapter_sha256'],
+        evaluation_status='pending_or_running', status='Candidate')
+    temporary_status = status_path.with_suffix('.tmp')
+    temporary_status.write_text(json.dumps(status, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    temporary_status.replace(status_path)
     print(json.dumps({'training_status': 'completed', 'optimizer_steps': experiment['optimizer_steps'],
                       'selected_checkpoint': experiment['selected_checkpoint'], 'epochs': epochs}, ensure_ascii=False))
 

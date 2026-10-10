@@ -4,6 +4,7 @@
   "fork": "https://github.com/KORemc2/healthmon-capstone",
   "workspace": "E:/qwen-llm/HEALTHMON/Ai/LLM",
   "development_branch": "feat/llm-natural-dialogue",
+  "active_experiment_branch": "exp/llm/repair-v5",
   "baseline_tag": "baseline/llm-local-20261010",
   "baseline_backup_files": 2992,
   "baseline_backup_bytes": 24303647199,
@@ -69,6 +70,23 @@
       "checkpoint_path": "runs/dialogue-mixed-v3-20261010/checkpoint-epoch-1",
       "training_git_commit": "6abb9acbb85a486a08b734e5b46f609428036066"
     },
+    "repair-v5": {
+      "training_executed": true,
+      "training_status": "running",
+      "epochs_planned": 2,
+      "optimizer_updates_planned": 426,
+      "train_count": 851,
+      "validation_count": 40,
+      "test_count": 44,
+      "quantization": "nf4_double_quant_bf16_compute",
+      "rank": 16,
+      "initialization": "clean_pinned_base",
+      "run": "runs/dialogue-repair-v5-20261010",
+      "metadata_path": "experiments/repair-v5.json",
+      "training_git_commit": "2d80be4",
+      "human_review": false,
+      "production_approved": false
+    },
     "multiturn-v4": {
       "training_executed": true,
       "epochs": 1,
@@ -93,10 +111,11 @@
     "actual_fixed_analysis_checks": 30,
     "actual_heldout_responses": 40,
     "actual_heldout_analysis_checks": 10,
-    "full_python_suite_passed": 467,
+    "full_python_suite_passed": 473,
+    "prompt_fact_projection_targeted_tests_passed": 15,
     "source_cache_tests_included": 2,
     "gpu_lock_test_included": 1,
-    "full_suite_seconds": 47.11
+    "full_suite_seconds": 48.79
   },
   "github_write_policy": "fork_only_until_explicit_user_request",
   "configured_remotes": [
@@ -114,6 +133,6 @@
   "deleted_original_datasets": [],
   "cleanup": "Four Clone cache directories and temporary PR helper removed; baseline files untouched.",
   "lab_url": "http://127.0.0.1:8002/",
-  "latest_report": "docs/EXTERNAL_DIALOGUE_EXPERIMENTS.md",
+  "latest_report": "docs/DIALOGUE_REPAIR.md",
   "upstream_pr_creation_deferred": true
 }
