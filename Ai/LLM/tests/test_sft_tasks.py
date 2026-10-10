@@ -39,3 +39,30 @@ def test_analyzer_target_is_validated_and_uses_separate_task():
 
 def test_unknown_task_fails_before_training():
     with pytest.raises(ValueError,match='Unknown SFT'):training_prompt({'prompt_kind':'invalid'})
+
+
+@pytest.mark.parametrize('fail',[False,True])
+def test_candidate_analyzer_uses_requested_adapter_and_restores(monkeypatch,fail):
+    from types import SimpleNamespace
+    from threading import Lock
+    from src.model_comparison import analyze_model
+    class Model:
+        active_adapter='default'
+        peft_config={}
+        def load_adapter(self,path,adapter_name):self.peft_config[adapter_name]=path
+        def set_adapter(self,key):self.active_adapter=key
+        def eval(self):pass
+    model=Model()
+    runtime=SimpleNamespace(lock=Lock(),backend=SimpleNamespace(model=model),_load=lambda:None)
+    monkeypatch.setattr('src.model_comparison.entry',lambda *a,**kw:{'adapter_path':'runs/candidate'})
+    def analyze(self,text,mode,settings):
+        with self.runtime.lock:
+            identifier=self.runtime._load()
+            assert model.active_adapter!='default'
+            if fail:raise RuntimeError('Injected analyzer failure')
+            return {'model_identifier':identifier}
+    monkeypatch.setattr('src.character_lab_models.ConversationAnalyzer.analyze',analyze)
+    if fail:
+        with pytest.raises(RuntimeError,match='Injected'):analyze_model(runtime,'candidate','text',{})
+    else:assert analyze_model(runtime,'candidate','text',{})['model_identifier']=='runs/candidate'
+    assert model.active_adapter=='default'

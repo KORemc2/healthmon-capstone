@@ -9,6 +9,7 @@ from transformers import AutoTokenizer,Qwen3_5ForConditionalGeneration
 from peft import LoraConfig,get_peft_model,PeftModel
 from src.chatml import encode_chatml
 from src.sft_tasks import training_prompt
+from src.training_loss import assistant_only_loss
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--smoke',action='store_true');parser.add_argument('--run',required=True)
@@ -16,6 +17,7 @@ def main():
     parser.add_argument('--data',default='data/pilot_v2');parser.add_argument('--init-adapter');parser.add_argument('--lr',type=float,default=1e-4)
     parser.add_argument('--profile',choices=['baseline','natural-v1'],default='baseline')
     parser.add_argument('--prompt-kind',choices=['legacy','character'],default='legacy')
+    parser.add_argument('--assistant-logits-only',action='store_true')
     args=parser.parse_args(); dest=ROOT/'runs'/args.run
     if not 1<=args.epochs<=5: raise ValueError('Epochs must be 1..5')
     if dest.exists(): raise RuntimeError('Run exists; choose a new run name, including when resuming')
@@ -60,7 +62,8 @@ def main():
           'epochs':1 if args.smoke else args.epochs,'max_length':args.max_length,'trainable':sum(p.numel() for _,p in parameters),
           'data_manifest':json.loads((ROOT/args.data/'manifest.json').read_text(encoding='utf-8')),'smoke':args.smoke,
           'data':args.data,'init_adapter':args.init_adapter,'runtime_guidance':True,'shuffle_seed':42,
-          'prompt_profile':args.profile,'prompt_kind':args.prompt_kind,'git_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
+          'prompt_profile':args.profile,'prompt_kind':args.prompt_kind,'assistant_logits_only':args.assistant_logits_only,
+          'git_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
           'base_revision':json.loads((ROOT/'config/qwen3.5-9b.json').read_text())['revision']}
     (dest/'config.json').write_text(json.dumps(conf,ensure_ascii=False,indent=2),encoding='utf-8')
     optimizer=torch.optim.AdamW([p for _,p in parameters],lr=args.lr)
@@ -71,11 +74,15 @@ def main():
         saved=torch.load(ROOT/args.resume/'optimizer.pt',map_location='cpu',weights_only=True)
         optimizer.load_state_dict(saved['optimizer']);start_epoch=saved['epoch'];steps=saved['steps']
         torch.set_rng_state(saved['rng']);torch.cuda.set_rng_state(saved['cuda_rng'])
+    def forward_loss(batch):
+        tensors={k:v.to('cuda') for k,v in batch.items()}
+        if args.assistant_logits_only:return assistant_only_loss(model,tensors)
+        return model(**tensors,use_cache=False).loss
     def evaluate():
         model.eval();losses=[]
         with torch.no_grad():
             for batch in val:
-                loss=model(**{k:v.to('cuda') for k,v in batch.items()},use_cache=False).loss
+                loss=forward_loss(batch)
                 losses.append(float(loss));del loss
                 torch.cuda.empty_cache()
         model.train();return sum(losses)/len(losses)
@@ -93,10 +100,9 @@ def main():
             for i,idx in enumerate(order):
                 batch=train[idx]
                 window=min(8,len(train)-(i//8)*8)
-                output=model(**{k:v.to('cuda') for k,v in batch.items()},use_cache=False)
-                loss=output.loss
+                loss=forward_loss(batch)
                 if not torch.isfinite(loss):raise RuntimeError('Nonfinite loss')
-                value=float(loss.detach());(loss/window).backward();del output,loss
+                value=float(loss.detach());(loss/window).backward();del loss
                 emit('backward',epoch=epoch+1,sample=i+1,loss=value,peak_allocated_gib=torch.cuda.max_memory_allocated()/2**30,
                      peak_reserved_gib=torch.cuda.max_memory_reserved()/2**30,device_used_total_mib=memory())
                 if (i+1)%8==0 or i+1==len(train):

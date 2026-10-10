@@ -34,7 +34,7 @@
 ```powershell
 .\.venv\Scripts\python.exe scripts\fetch_dialogue_sources.py
 .\.venv\Scripts\python.exe scripts\prepare_dialogue_experiments.py
-.\.venv\Scripts\python.exe scripts\train_lora.py --run dialogue-tone-v1-20261010 --data data/external_sft_tone-v1 --init-adapter runs/expanded-20260929/checkpoint-epoch-1 --profile natural-v1 --prompt-kind character --epochs 1 --max-length 3072 --lr 2e-5
+.\.venv\Scripts\python.exe scripts\train_lora.py --run dialogue-tone-v1-20261010 --data data/external_sft_tone-v1 --init-adapter runs/expanded-20260929/checkpoint-epoch-1 --profile natural-v1 --prompt-kind character --epochs 1 --max-length 3072 --lr 2e-5 --assistant-logits-only
 ```
 
 데이터 준비와 학습은 기존 버전 경로를 덮어쓰지 않는다. 새 실행에는 새 버전 이름이 필요하다. 고정 개발 사례16개에서 동일 문맥·seed·생성 설정으로 비교하고, `--analyze-each-model`은 후보 어댑터 자체의 Analyzer를 검사한다. 결과는 사람 검토 전까지 Candidate로 보관하며 Baseline 선택을 유지한다. 손실만으로 채택하지 않는다.

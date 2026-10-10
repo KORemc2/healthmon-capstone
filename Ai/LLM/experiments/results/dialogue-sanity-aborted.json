@@ -1,0 +1,6 @@
+{
+  "status": "aborted_before_first_backward",
+  "reason": "VRAM 24245/24576 MiB and no completed backward after several minutes; avoid WDDM paging",
+  "training_completed": false,
+  "time": 1791624796.1975021
+}
