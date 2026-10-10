@@ -1,7 +1,7 @@
 {
   "experiment_id": "repair-v5",
   "branch": "exp/llm/repair-v5",
-  "training_status": "planned",
+  "training_status": "running",
   "run": "dialogue-repair-v5-20261010",
   "init_adapter": null,
   "initialization": "clean pinned Qwen3.5-9B; no prior adapter to avoid inheriting the short-answer regression",

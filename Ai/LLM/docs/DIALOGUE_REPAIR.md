@@ -36,4 +36,10 @@ Training loss alone cannot select a replacement. Compare actual multi-turn respo
 
 Official implementation references: [Transformers bitsandbytes](https://huggingface.co/docs/transformers/quantization/bitsandbytes), [PEFT quantization](https://huggingface.co/docs/peft/developer_guides/quantization), [Qwen3.5](https://huggingface.co/docs/transformers/model_doc/qwen3_5).
 
-Current stage: semantic triage and final dataset freeze before full training. Completed training/evaluation results will be appended only after they actually finish.
+## Frozen full training run
+
+`dialogue_repair_v8` contains 851 training, 40 validation and 44 held-out rows. Training has 739 conversation groups and 358 rows with prior turns. Speech averages 82.3 characters; the maximum is 423. This remains a development-sized dataset, not a large-scale Korean language training corpus. Final source hashes and all selection limitations are recorded in `experiments/repair-v5.json`.
+
+The final configuration passed a separate eight-row sanity run using the longest training examples, batch size 2, rank 16 and speech loss weight 3. It saved and reloaded the adapter with identical validation loss; peak allocated memory was 17.62 GiB. The full run starts independently from the clean pinned base, uses NF4 double quantization, and schedules two epochs / 426 optimizer updates. The earlier baseline and all four rejected adapters remain intact.
+
+Current stage: full training is running. Completion will trigger serial baseline / same-prompt baseline / new-adapter regression checks, followed by three-turn conversations, individual personality-axis probes and a frozen local holdout. Full training and evaluation results will be appended only after they actually finish.
