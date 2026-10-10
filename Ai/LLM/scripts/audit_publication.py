@@ -30,7 +30,7 @@ def main():
         except (UnicodeDecodeError,IsADirectoryError):continue
         if any(secret and len(secret)>10 and secret in value for secret in secrets):
             hits.append({'file':name,'kind':'actual_local_secret'})
-        if re.search(r'-----BEGIN .*PRIVATE KEY-----|gh[pousr]_[A-Za-z0-9]{30,}|AKIA[A-Z0-9]{16}|sk-(?:proj-)?[A-Za-z0-9_-]{30,}',value):
+        if re.search(r'(?m)^-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----$|gh[pousr]_[A-Za-z0-9]{30,}|AKIA[A-Z0-9]{16}|sk-(?:proj-)?[A-Za-z0-9_-]{30,}',value):
             hits.append({'file':name,'kind':'key_pattern'})
     report={'files_checked':len(names),'secret_hits':hits,'passed':not hits,
             'scope':'Secret/ignored-file audit only; synthetic dataset provenance is documented separately.'}
