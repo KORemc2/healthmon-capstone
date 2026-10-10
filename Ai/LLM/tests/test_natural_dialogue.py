@@ -28,6 +28,7 @@ def test_opt_in_preserves_baseline_and_does_not_mutate_facts():
 
 def test_cleanup_protects_shared_paths_and_selection_requires_human_review(tmp_path):
     registry=read_registry();registry['models']['old']={**registry['models']['baseline-expanded'],'status':'Rejected'}
+    registry['models']['natural-v1']['status']='Candidate'
     assert not next(row for row in cleanup_inventory(registry) if row['id']=='old')['deletion_candidate']
     path=tmp_path/'registry.json';path.write_text(json.dumps(registry),encoding='utf-8')
     with pytest.raises(ValueError,match='human review'):

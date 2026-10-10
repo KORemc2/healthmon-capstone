@@ -1,0 +1,17 @@
+{
+  "experiment_id": "natural-v2-smoke",
+  "branch": "exp/llm/natural-v2",
+  "kind": "continued_lora_sft_feasibility",
+  "base_model": "Qwen/Qwen3.5-9B",
+  "base_revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+  "initial_adapter": "runs/expanded-20260929/checkpoint-epoch-1",
+  "dataset_version": "natural_sft_v1",
+  "data_composition": {"authored_natural_train": 12, "retained_personality_train": 4, "validation": 4},
+  "prompt_profile": "natural-v1",
+  "hyperparameters": {"epochs": 1, "rank": 8, "alpha": 32, "learning_rate": 0.00002, "batch_size": 1, "gradient_accumulation": 8, "max_length": 1536, "seed": 42},
+  "output_path": "runs/natural-v2-smoke-20261010",
+  "training_status": "pending",
+  "human_review": false,
+  "production_approved": false,
+  "decision": "pending_actual_training_and_evaluation"
+}
