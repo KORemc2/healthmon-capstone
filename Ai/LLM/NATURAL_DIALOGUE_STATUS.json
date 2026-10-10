@@ -83,19 +83,20 @@
     }
   },
   "verification": {
-    "python_integration_tests_passed": 464,
-    "separate_gpu_lock_test_passed": 1,
     "node_api_tests_passed": 5,
     "dataset_files_sha256_verified": 6,
     "browser_actual_model_comparison_passed": true,
     "secret_scan_hits": 0,
-    "additional_source_cache_tests_passed": 2,
     "external_raw_files_sha256_verified": 9,
     "external_derived_split_files_sha256_verified": 12,
     "actual_fixed_responses": 80,
     "actual_fixed_analysis_checks": 30,
     "actual_heldout_responses": 40,
-    "actual_heldout_analysis_checks": 10
+    "actual_heldout_analysis_checks": 10,
+    "full_python_suite_passed": 467,
+    "source_cache_tests_included": 2,
+    "gpu_lock_test_included": 1,
+    "full_suite_seconds": 47.11
   },
   "github_write_policy": "fork_only_until_explicit_user_request",
   "configured_remotes": [
