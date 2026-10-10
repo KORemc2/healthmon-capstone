@@ -17,3 +17,4 @@ backups/
 !.env.example
 data/external_raw/
 data/external_sft_*/
+data/dialogue_repair_v*/

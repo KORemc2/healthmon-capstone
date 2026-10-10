@@ -33,6 +33,9 @@ show_progress의 target_id는 활성 퀘스트 id, offer_quest의 target_id는 �
 
 
 def persona_messages(context, text, repair=None, profile='baseline'):
+    if profile == 'natural-v2':
+        from .dialogue_v2 import dialogue_messages
+        return dialogue_messages(context, text, repair)
     guidance = context['style_profile'].get('guidance', [])
     if isinstance(guidance, str):
         guidance = [guidance]

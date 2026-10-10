@@ -13,7 +13,7 @@ def read_registry(path=REGISTRY):
     if registry['selected_id'] not in registry['models']:
         raise ValueError('Selected model is missing')
     for key, model in registry['models'].items():
-        if model['status'] not in STATUSES or model['prompt_profile'] not in ('baseline', 'natural-v1'):
+        if model['status'] not in STATUSES or model['prompt_profile'] not in ('baseline', 'natural-v1', 'natural-v2'):
             raise ValueError('Invalid registry entry: ' + key)
         relative = Path(model['adapter_path'])
         if relative.is_absolute() or '..' in relative.parts:

@@ -1,0 +1,66 @@
+{
+  "repo": "lemon-mint/smol-koreantalk",
+  "revision": "04eb12c1f999578d74dd87720bc853cedb7fa156",
+  "declared_license": "apache-2.0",
+  "upstream": "HuggingFaceTB/smol-smoltalk",
+  "purpose": "Korean instruction following and context-aware conversation; exclude role-play, system-override, technical and unverifiable factual examples",
+  "downloaded_shards": 8,
+  "total_shards": 8,
+  "human_review": false,
+  "files": [
+    {
+      "file": "data/external_raw/smol_koreantalk/README.md",
+      "url": "https://huggingface.co/datasets/lemon-mint/smol-koreantalk/resolve/04eb12c1f999578d74dd87720bc853cedb7fa156/README.md",
+      "bytes": 835,
+      "sha256": "95d056720b4675de0193d004bd8abdced51629e4891b6340ab13039f13c77f53"
+    },
+    {
+      "file": "data/external_raw/smol_koreantalk/train-00000-of-00008.parquet",
+      "url": "https://huggingface.co/datasets/lemon-mint/smol-koreantalk/resolve/04eb12c1f999578d74dd87720bc853cedb7fa156/data/train-00000-of-00008.parquet",
+      "bytes": 243995230,
+      "sha256": "55e79084d5acd3a0cd88422ce42f20681a3a0dd052e6342138e65120439b0eed"
+    },
+    {
+      "file": "data/external_raw/smol_koreantalk/train-00001-of-00008.parquet",
+      "url": "https://huggingface.co/datasets/lemon-mint/smol-koreantalk/resolve/04eb12c1f999578d74dd87720bc853cedb7fa156/data/train-00001-of-00008.parquet",
+      "bytes": 246170674,
+      "sha256": "4c18b7a27d6fafea96b07dcfa62affab20f65c3925650d4ecd854d7a1a3a869b"
+    },
+    {
+      "file": "data/external_raw/smol_koreantalk/train-00002-of-00008.parquet",
+      "url": "https://huggingface.co/datasets/lemon-mint/smol-koreantalk/resolve/04eb12c1f999578d74dd87720bc853cedb7fa156/data/train-00002-of-00008.parquet",
+      "bytes": 244550755,
+      "sha256": "e1ac8c07b6c17a32075202cb48fb2f73e6b39ca18c475be1728ad138a5d0a2ac"
+    },
+    {
+      "file": "data/external_raw/smol_koreantalk/train-00003-of-00008.parquet",
+      "url": "https://huggingface.co/datasets/lemon-mint/smol-koreantalk/resolve/04eb12c1f999578d74dd87720bc853cedb7fa156/data/train-00003-of-00008.parquet",
+      "bytes": 246489034,
+      "sha256": "7a5d87a7fab13058cd493c1fc018478c417300f04e082b6d6fa125e3c6bf5524"
+    },
+    {
+      "file": "data/external_raw/smol_koreantalk/train-00004-of-00008.parquet",
+      "url": "https://huggingface.co/datasets/lemon-mint/smol-koreantalk/resolve/04eb12c1f999578d74dd87720bc853cedb7fa156/data/train-00004-of-00008.parquet",
+      "bytes": 246197445,
+      "sha256": "dba619535856218cdbedaa0d2cdc5321a3475469dc66bbbdec812c313339e80f"
+    },
+    {
+      "file": "data/external_raw/smol_koreantalk/train-00005-of-00008.parquet",
+      "url": "https://huggingface.co/datasets/lemon-mint/smol-koreantalk/resolve/04eb12c1f999578d74dd87720bc853cedb7fa156/data/train-00005-of-00008.parquet",
+      "bytes": 245547750,
+      "sha256": "b358a42104a81f7331a9b1c613d76e59cfafd67722691a86aa2b5ed5128ba985"
+    },
+    {
+      "file": "data/external_raw/smol_koreantalk/train-00006-of-00008.parquet",
+      "url": "https://huggingface.co/datasets/lemon-mint/smol-koreantalk/resolve/04eb12c1f999578d74dd87720bc853cedb7fa156/data/train-00006-of-00008.parquet",
+      "bytes": 247921022,
+      "sha256": "b67c0da3852e593141823bf12ff526075d5b3ceae4484bf8b3c2c16d29e81fb5"
+    },
+    {
+      "file": "data/external_raw/smol_koreantalk/train-00007-of-00008.parquet",
+      "url": "https://huggingface.co/datasets/lemon-mint/smol-koreantalk/resolve/04eb12c1f999578d74dd87720bc853cedb7fa156/data/train-00007-of-00008.parquet",
+      "bytes": 246498052,
+      "sha256": "3784d62a3c69d64fde379fc056025ca3b83164237ab0b26ef8417a379eb514c9"
+    }
+  ]
+}

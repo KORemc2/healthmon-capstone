@@ -1,0 +1,24 @@
+{
+  "repo": "lemon-mint/smol-koreantalk",
+  "revision": "04eb12c1f999578d74dd87720bc853cedb7fa156",
+  "declared_license": "apache-2.0",
+  "upstream": "HuggingFaceTB/smol-smoltalk",
+  "purpose": "Korean instruction following and context-aware conversation; exclude role-play, system-override, technical and unverifiable factual examples",
+  "downloaded_shards": 1,
+  "total_shards": 8,
+  "human_review": false,
+  "files": [
+    {
+      "file": "data/external_raw/smol_koreantalk/README.md",
+      "url": "https://huggingface.co/datasets/lemon-mint/smol-koreantalk/resolve/04eb12c1f999578d74dd87720bc853cedb7fa156/README.md",
+      "bytes": 835,
+      "sha256": "95d056720b4675de0193d004bd8abdced51629e4891b6340ab13039f13c77f53"
+    },
+    {
+      "file": "data/external_raw/smol_koreantalk/train-00000-of-00008.parquet",
+      "url": "https://huggingface.co/datasets/lemon-mint/smol-koreantalk/resolve/04eb12c1f999578d74dd87720bc853cedb7fa156/data/train-00000-of-00008.parquet",
+      "bytes": 243995230,
+      "sha256": "55e79084d5acd3a0cd88422ce42f20681a3a0dd052e6342138e65120439b0eed"
+    }
+  ]
+}

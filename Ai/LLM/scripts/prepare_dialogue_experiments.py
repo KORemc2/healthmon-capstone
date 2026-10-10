@@ -27,8 +27,8 @@ def normalized(text):
     return re.sub(r'[^가-힣a-z0-9]', '', text.lower())
 
 
-def usable(text, answer=False):
-    if not 4 <= len(text) <= (100 if answer else 180): return False
+def usable(text, answer=False, answer_max=100):
+    if not 4 <= len(text) <= (answer_max if answer else 180): return False
     if len(re.findall('[가-힣]', text))/max(1, len(text)) < .35: return False
     if re.search(r'@|https?://|\d{3}[- ]\d{3,4}[- ]\d{4}|\d{6}[- ]?[1-4]\d{6}', text): return False
     if re.search(r'자살|자해|살인|성폭|강간|시발|씨발|병신|죽어|의약|약물', text): return False
@@ -48,17 +48,18 @@ def response(text):
             'action': {'type': 'none', 'target_id': None}, 'memory_ids': [], 'personality_update': None}
 
 
-def external_pools():
+def external_pools(pool_limit=128, answer_max=100, defer_context=False):
     pools = {kind: {s: [] for s in ('train', 'validation', 'test')} for kind in ('tone', 'emotion', 'multiturn')}
     counts = Counter()
     seen_pairs, group_splits, utterance_splits = set(), {}, {}
     evaluation = json.loads((ROOT/'data/natural_eval_v1/cases.json').read_text(encoding='utf-8'))
     excluded = {normalized(x['text']) for x in evaluation['cases']}
+    cached_contexts = ({s: make_context('', speech=s) for s in ('formal', 'casual')} if defer_context else {})
 
     def add(kind, split, group, source_id, user, answer, recent=None, emotion=None):
-        if len(pools[kind][split]) >= 128: counts['pool_limit_skipped'] += 1; return
+        if pool_limit is not None and len(pools[kind][split]) >= pool_limit: counts['pool_limit_skipped'] += 1; return
         fingerprint = digest(normalized(user)+'|'+normalized(answer))
-        if not usable(user) or not usable(answer, True): counts['filtered_text'] += 1; return
+        if not usable(user) or not usable(answer, True, answer_max): counts['filtered_text'] += 1; return
         if normalized(user) in excluded: counts['evaluation_overlap'] += 1; return
         if (kind, fingerprint) in seen_pairs: counts['duplicate_pairs'] += 1; return
         if group in group_splits and group_splits[group] != split: counts['cross_split_groups'] += 1; return
@@ -70,10 +71,12 @@ def external_pools():
         speech = 'formal' if re.search(r'(요|니다|세요|까요)[.!?]*$', answer) else 'casual'
         row = {'sample_id': kind+'-'+fingerprint[:16], 'source_id': source_id,
                'scenario_group': group, 'prompt_kind': 'character', 'user_text': user,
-               'context': make_context(user, recent, speech=speech), 'answer': response(answer),
+               'context': None if defer_context else make_context(user, recent, speech=speech), 'answer': response(answer),
+               **({'deferred_speech_level': speech, 'deferred_recent': recent or []} if defer_context else {}),
                'source_user_emotion': emotion, 'character_mood_source': 'independent_default_zero',
                'human_review': False, 'split': split}
-        try: validate(json.dumps(row['answer'],ensure_ascii=False),row['context'],user)
+        validation_context = dict(cached_contexts[speech], recent=recent or []) if defer_context else row['context']
+        try: validate(json.dumps(row['answer'],ensure_ascii=False),validation_context,user)
         except ValueError: counts['contract_filtered'] += 1; return
         seen_pairs.add((kind, fingerprint)); group_splits[group] = split
         for key in keys: utterance_splits[key] = split
