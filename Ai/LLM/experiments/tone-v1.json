@@ -29,9 +29,13 @@
   "checkpoint_path": "runs/dialogue-tone-v1-20261010/checkpoint-epoch-1",
   "human_review": false,
   "production_approved": false,
-  "model_status": "Candidate",
+  "model_status": "Rejected",
   "data_and_weights_publication": "local_only_noncommercial_research",
   "training_git_commit": "95d439770ec4541a54086d171e00d45f7e1cfbb4",
-  "evaluation_status": "pending",
-  "elapsed_seconds": 293.0873954296112
+  "evaluation_status": "completed_development_and_local_holdout",
+  "elapsed_seconds": 293.0873954296112,
+  "decision": "Unsupported absolution in distress response; insufficient detail and awkward high-affinity dialogue.",
+  "adapter_sha256": "8ddab1dc4e6e9f2fe5300cebba46a4d17558733056985d56a4ed64266ca8dbec",
+  "evaluation_path": "experiments/results/tone-v1-evaluation.json",
+  "automatic_promotion": false
 }
