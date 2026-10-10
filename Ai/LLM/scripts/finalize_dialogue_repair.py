@@ -66,6 +66,8 @@ def main():
     for cache_name,audit_name in sources:
         cache=json.loads((base/cache_name).read_text(encoding='utf-8'))['data']
         scores={r['sample_id']:r for r in (json.loads(x) for x in (base/audit_name).read_text(encoding='utf-8').splitlines())}
+        if 'v7' in cache_name and any(r['sample_id'] not in scores for v in cache.values() for r in v['candidates']):
+            raise RuntimeError('New source semantic triage has not finished; dataset not frozen')
         source_hashes[cache_name]=hash_file(base/cache_name);source_hashes[audit_name]=hash_file(base/audit_name)
         for split in data:
             if 'v7' in cache_name:data[split].extend(cache[split]['authored'])
