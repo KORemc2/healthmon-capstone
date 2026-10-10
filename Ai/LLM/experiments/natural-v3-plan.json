@@ -1,0 +1,18 @@
+{
+  "experiment_id": "natural-v3",
+  "branch": "exp/llm/natural-v3",
+  "kind": "multiturn_and_character_mixed_sft",
+  "training_status": "not_started",
+  "evaluation_status": "not_started",
+  "checkpoint_path": null,
+  "model_status": null,
+  "requirements_before_training": [
+    "Human review of natural dialogue additions and rejection examples",
+    "Separate Character Lab Activity/Affinity/Initiative labels from legacy seven-axis data",
+    "Scenario-group splits and retained personality/memory/quest regression cases",
+    "Choose dataset proportions from actual V1 and V2 failure analysis"
+  ],
+  "paid_api_used": false,
+  "decision": "deferred_until_data_review",
+  "note": "Branch/config only. No claimed training or generated checkpoint. DPO is not scheduled without preference evidence."
+}
