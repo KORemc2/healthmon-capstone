@@ -38,6 +38,66 @@
       "decision": "No overall quality improvement demonstrated; unsupported assumptions remain",
       "compatibility_passed": false,
       "analysis_adapter_coverage": "Analyzer checks used preserved baseline, not trained candidate"
+    },
+    "tone-v1": {
+      "status": "Candidate",
+      "adapter_path": "runs/dialogue-tone-v1-20261010/checkpoint-epoch-1",
+      "adapter_sha256": "8ddab1dc4e6e9f2fe5300cebba46a4d17558733056985d56a4ed64266ca8dbec",
+      "prompt_profile": "natural-v1",
+      "training_status": "completed",
+      "dataset_version": "external_sft_tone-v1",
+      "training_git_commit": "95d439770ec4541a54086d171e00d45f7e1cfbb4",
+      "human_review": false,
+      "production_approved": false,
+      "compatibility_passed": false,
+      "evaluation_status": "pending",
+      "license_scope": "Local noncommercial research; no dataset or adapter publication",
+      "note": "Independent initialization from preserved baseline; no automatic promotion."
+    },
+    "emotion-v2": {
+      "status": "Candidate",
+      "adapter_path": "runs/dialogue-emotion-v2-20261010/checkpoint-epoch-1",
+      "adapter_sha256": "d68dae292d21a8e9b2db8eb774051e904b2b4b2623feb67d77f3927126b1b444",
+      "prompt_profile": "natural-v1",
+      "training_status": "completed",
+      "dataset_version": "external_sft_emotion-v2",
+      "training_git_commit": "58598affd19726c7b4135ce14207bdd5eb10cacb",
+      "human_review": false,
+      "production_approved": false,
+      "compatibility_passed": false,
+      "evaluation_status": "pending",
+      "license_scope": "Local noncommercial research; no dataset or adapter publication",
+      "note": "Independent initialization from preserved baseline; no automatic promotion."
+    },
+    "mixed-v3": {
+      "status": "Candidate",
+      "adapter_path": "runs/dialogue-mixed-v3-20261010/checkpoint-epoch-1",
+      "adapter_sha256": "d5ce6db5cec18640e0b82e87cff25a894001be9bfec1484cfc8b032311a55e53",
+      "prompt_profile": "natural-v1",
+      "training_status": "completed",
+      "dataset_version": "external_sft_mixed-v3",
+      "training_git_commit": "6abb9acbb85a486a08b734e5b46f609428036066",
+      "human_review": false,
+      "production_approved": false,
+      "compatibility_passed": false,
+      "evaluation_status": "pending",
+      "license_scope": "Local noncommercial research; no dataset or adapter publication",
+      "note": "Independent initialization from preserved baseline; no automatic promotion."
+    },
+    "multiturn-v4": {
+      "status": "Candidate",
+      "adapter_path": "runs/dialogue-multiturn-v4-20261010/checkpoint-epoch-1",
+      "adapter_sha256": "7a1c0ed47667ab490e1278477dddcad55a4184797568a99f983ecc1a46f1839f",
+      "prompt_profile": "natural-v1",
+      "training_status": "completed",
+      "dataset_version": "external_sft_multiturn-v4",
+      "training_git_commit": "2b32771436d28ecd2cec3a63f6ad22172548fefd",
+      "human_review": false,
+      "production_approved": false,
+      "compatibility_passed": false,
+      "evaluation_status": "pending",
+      "license_scope": "Local noncommercial research; no dataset or adapter publication",
+      "note": "Independent initialization from preserved baseline; no automatic promotion."
     }
   }
 }

@@ -27,6 +27,17 @@ def save(folder, name, url):
 
 def main():
     RAW.mkdir(parents=True, exist_ok=True)
+    manifest_path=ROOT/'experiments/external-dialogue-sources.json'
+    if manifest_path.exists():
+        cached=json.loads(manifest_path.read_text(encoding='utf-8'))
+        files=[f for source in cached['sources'] for f in source['files']]
+        for item in files:
+            if hashlib.sha256((ROOT/item['file']).read_bytes()).hexdigest()!=item['sha256']:
+                raise RuntimeError('Pinned local source changed; preserve it and use a new version')
+        print(json.dumps({'pinned_manifest_reused':True,'sha256_verified_files':len(files)}))
+        return
+    if any(RAW.iterdir()):
+        raise RuntimeError('Unrecorded partial download preserved; choose a fresh version directory')
     records = []
     github = json.loads(get('https://api.github.com/repos/songys/Chatbot_data/commits/master'))
     revision = github['sha']

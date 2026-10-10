@@ -9,7 +9,7 @@ class SmallModel(torch.nn.Module):
     def __init__(self):
         super().__init__();self.embedding=torch.nn.Embedding(19,8);self.head=torch.nn.Linear(8,19)
     def forward(self,input_ids,attention_mask,logits_to_keep=0,use_cache=False):
-        hidden=self.embedding(input_ids)
+        hidden=self.embedding(input_ids).cumsum(dim=1)
         if isinstance(logits_to_keep,torch.Tensor):hidden=hidden[:,logits_to_keep,:]
         return SimpleNamespace(logits=self.head(hidden))
 

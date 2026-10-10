@@ -2,6 +2,15 @@
 
 기존 로컬 LLM을 `Ai/LLM`에 가져온 개발 환경입니다. 원래 실행 폴더 `E:\qwen-llm`은 보존했습니다. 과거 실행 기록은 `START_HERE.md`와 기존 감사 문서에 남아 있으며 현재 서버 상태를 뜻하지 않습니다.
 
+현재 작업은 **KORemc2의 Fork 클론**에서만 진행합니다. `origin`은 사용자 Fork이며 원본 원격 연결은 제거했습니다. 원본 전송은 사용자가 나중에 명시적으로 요청할 때 진행합니다. 다른 PC에서는 실제 LLM 코드가 있는 브랜치로 클론하세요.
+
+```powershell
+git clone --branch feat/llm-natural-dialogue https://github.com/KORemc2/healthmon-capstone.git HEALTHMON
+Set-Location HEALTHMON\Ai\LLM
+```
+
+V1–V4 독립 실험의 자료 출처·실행 조건은 [한국어 대화 실험 기록](docs/EXTERNAL_DIALOGUE_EXPERIMENTS.md)에 있습니다. 외부 원문·변환 데이터·가중치는 로컬 연구용으로 보관합니다.
+
 ## 실행
 
 현재 PC에서는 이 디렉터리에서 아래 명령을 사용합니다.
