@@ -26,7 +26,8 @@ def grounded_rows(split):
         mid=f'repair-memory-{split}-{index}'
         context=make_context(question,memories=[{'id':mid,'slot':slot,'content':fact,'confidence':1,
             'evidence_refs':[{'kind':'message','id':mid+'-source','revision':1}]}],speech='casual')
-        speech=f'기억에 남은 취향은 {fact}야.' if slot=='preference' else f'목표는 {fact}야.' if slot=='goal' else f'기억에는 {fact}이라고 남아 있어.'
+        final=ord(fact[-1]);copula='이야' if 0xAC00<=final<=0xD7A3 and (final-0xAC00)%28 else '야'
+        speech=f'기억에 남은 취향은 {fact}{copula}.' if slot=='preference' else f'목표는 {fact}{copula}.' if slot=='goal' else f'기억에는 {fact}이라고 남아 있어.'
         answer=response(speech);answer['memory_ids']=[mid]
         rows.append({'sample_id':mid,'scenario_group':mid,'source_id':'agent-authored-grounding-v7','prompt_kind':'character',
             'user_text':question,'context':context,'answer':answer,'human_review':False,'split':split})
@@ -45,7 +46,7 @@ def grounded_rows(split):
 
 def main():
     sys.stdout.reconfigure(encoding='utf-8')
-    dest=ROOT/'data/dialogue_repair_v7'
+    dest=ROOT/'data/dialogue_repair_v8'
     if dest.exists():raise RuntimeError('Existing frozen dataset preserved')
     base=ROOT/'runs/dialogue-repair-20261010'
     sources=[('triage-candidates.json','semantic-triage.jsonl'),('triage-v7-candidates.json','semantic-triage-v7.jsonl')]
@@ -105,7 +106,7 @@ def main():
         random.Random(20261010).shuffle(accepted);filtered[split]=accepted
     from transformers import AutoTokenizer
     tok=AutoTokenizer.from_pretrained(ROOT/'models/qwen3.5-9b',local_files_only=True)
-    result={'version':'dialogue_repair_v7','profile':'natural-v2','prompt_kind':'character','max_length':2048,
+    result={'version':'dialogue_repair_v8','profile':'natural-v2','prompt_kind':'character','max_length':2048,
         'counts':{},'sha256':{},'statistics':{},'filters':dict(counts),'source_hashes':source_hashes,
         'group_leakage':False,'substantial_exact_utterance_overlap':False,'no_token_truncation':True,
         'human_review':False,'license_scope':'Local noncommercial research; source texts, derived data and adapter stay local',
