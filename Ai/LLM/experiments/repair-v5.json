@@ -1,0 +1,139 @@
+{
+  "experiment_id": "repair-v5",
+  "branch": "exp/llm/repair-v5",
+  "training_status": "planned",
+  "run": "dialogue-repair-v5-20261010",
+  "init_adapter": null,
+  "initialization": "clean pinned Qwen3.5-9B; no prior adapter to avoid inheriting the short-answer regression",
+  "baseline_adapter_sha256": "26030bd0363aabcc5f49095c0a8bce76660bb9f038ef2e314c6dc1a9491e0133",
+  "base_revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+  "dataset": {
+    "version": "dialogue_repair_v8",
+    "profile": "natural-v2",
+    "prompt_kind": "character",
+    "max_length": 2048,
+    "counts": {
+      "test": 44,
+      "validation": 40,
+      "train": 851
+    },
+    "sha256": {
+      "test.jsonl": "bf41fcd35a621d32be316b8836c9f091fb5bbc282a56d39fbca1b2df42740e36",
+      "validation.jsonl": "0e333a5a56fa301b30a18112ff1bcbf4a79ed1dce4dc78d604cc3b937392e635",
+      "train.jsonl": "85c260d615061124bee7d49c7e716b2354469288b6d8a74a17f58f594f0d2958"
+    },
+    "statistics": {
+      "test": {
+        "unique_scenario_groups": 39,
+        "source_families": {
+          "lemon-mint/smol-koreantalk": 33,
+          "agent-authored-dialogue-style-pairs-v2-20261010": 3,
+          "agent-authored-dialogue-repair-20261010": 6,
+          "agent-authored-grounding-v7": 2
+        },
+        "mean_speech_characters": 139.27272727272728,
+        "max_speech_characters": 385,
+        "max_tokens": 1250,
+        "mean_tokens": 1000.3181818181819,
+        "multi_turn_rows": 27,
+        "memory_rows": 2
+      },
+      "validation": {
+        "unique_scenario_groups": 33,
+        "source_families": {
+          "lemon-mint/smol-koreantalk": 26,
+          "agent-authored-dialogue-repair-20261010": 9,
+          "agent-authored-dialogue-style-pairs-v2-20261010": 3,
+          "agent-authored-grounding-v7": 2
+        },
+        "mean_speech_characters": 117.725,
+        "max_speech_characters": 361,
+        "max_tokens": 1246,
+        "mean_tokens": 987.05,
+        "multi_turn_rows": 23,
+        "memory_rows": 2
+      },
+      "train": {
+        "unique_scenario_groups": 739,
+        "source_families": {
+          "songys/Chatbot_data": 122,
+          "agent-authored-dialogue-repair-20261010": 95,
+          "lemon-mint/smol-koreantalk": 356,
+          "passing2961/KorEmpatheticDialogues": 203,
+          "agent-authored-dialogue-style-pairs-v2-20261010": 54,
+          "agent-authored-grounding-v7": 21
+        },
+        "mean_speech_characters": 82.3090481786134,
+        "max_speech_characters": 423,
+        "max_tokens": 1520,
+        "mean_tokens": 928.3196239717979,
+        "multi_turn_rows": 358,
+        "memory_rows": 12
+      }
+    },
+    "filters": {
+      "triage_excluded": 7705,
+      "strict_text_excluded": 55,
+      "triage-candidates.json_train": 325,
+      "triage-candidates.json_validation": 0,
+      "triage-candidates.json_test": 0,
+      "triage-v7-candidates.json_train": 356,
+      "triage-v7-candidates.json_validation": 26,
+      "triage-v7-candidates.json_test": 33
+    },
+    "source_hashes": {
+      "triage-candidates.json": "4d9e6dfcc1be616ca122a43cfe657e9e6deb0a5fbd0d937121e208e2bdfee139",
+      "semantic-triage.jsonl": "648f8cc3baacf901f84e48f5197441c499b176b78e6da512eb98282a76fa71d8",
+      "triage-v7-candidates.json": "fb279812df8a84f21fc215909c1ba9179d2b74115fdac7dc28620e92e348a9ee",
+      "semantic-triage-v7.jsonl": "94cf339a11af1fb55258491d571a2c12ee1e343a25d82c3754ac9675af23b618"
+    },
+    "group_leakage": false,
+    "substantial_exact_utterance_overlap": false,
+    "no_token_truncation": true,
+    "human_review": false,
+    "license_scope": "Local noncommercial research; source texts, derived data and adapter stay local",
+    "triage_note": "Forced A/B scores from local base Qwen are uncalibrated selection heuristics, not ground truth or accuracy.",
+    "short_task_note": "Some SmolTalk responses are complete-sentence excerpts paired with an explicit short-answer request. These are documented derived tasks, not full original responses."
+  },
+  "quantization": {
+    "quant_method": "bitsandbytes",
+    "_load_in_8bit": false,
+    "_load_in_4bit": true,
+    "llm_int8_threshold": 6.0,
+    "llm_int8_skip_modules": [
+      "model.visual",
+      "visual",
+      "lm_head"
+    ],
+    "llm_int8_enable_fp32_cpu_offload": false,
+    "llm_int8_has_fp16_weight": false,
+    "bnb_4bit_quant_type": "nf4",
+    "bnb_4bit_use_double_quant": true,
+    "bnb_4bit_compute_dtype": "bfloat16",
+    "bnb_4bit_quant_storage": "uint8",
+    "load_in_4bit": true,
+    "load_in_8bit": false
+  },
+  "rank": 16,
+  "alpha": 32,
+  "batch_size": 2,
+  "grad_accum": 2,
+  "epochs": 2,
+  "planned_optimizer_updates": 426,
+  "lr": 0.0001,
+  "warmup_ratio": 0.05,
+  "speech_loss_weight": 3,
+  "max_length": 2048,
+  "profile": "natural-v2",
+  "prompt_kind": "character",
+  "seed": 42,
+  "assistant_logits_only": true,
+  "sanity": {
+    "completed": true,
+    "run": "dialogue-repair-nf4-batch2-sanity-20261010",
+    "peak_allocated_gib": 17.61511993408203
+  },
+  "human_review": false,
+  "production_approved": false,
+  "automatic_selection": false
+}
