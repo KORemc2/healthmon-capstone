@@ -1,6 +1,7 @@
 """Continue this local experiment after successful training; never promote or push."""
 import hashlib,json,os,subprocess,sys,time
 from pathlib import Path
+from urllib.request import ProxyHandler,build_opener
 ROOT=Path(__file__).resolve().parents[1]
 BASE=ROOT/'runs/dialogue-repair-20261010'
 RUN=ROOT/'runs/dialogue-repair-v5-20261010'
@@ -36,6 +37,8 @@ def main():
     conf=json.loads((ROOT/'experiments/repair-v5.json').read_text(encoding='utf-8'))
     baseline=ROOT/'runs/expanded-20260929/checkpoint-epoch-1/adapter_model.safetensors'
     if hashlib.sha256(baseline.read_bytes()).hexdigest()!=conf['baseline_adapter_sha256']:raise RuntimeError('Baseline changed')
+    phase('recording_completed_training')
+    subprocess.run([sys.executable,'scripts/record_completed_repair_training.py'],cwd=ROOT,check=True)
     selection=json.loads((RUN/'selection.json').read_text(encoding='utf-8'))
     selected=Path(selection['selected']['checkpoint']).resolve()
     if not selected.is_relative_to(RUN.resolve()):raise RuntimeError('Unexpected checkpoint selected')
@@ -57,13 +60,31 @@ def main():
     tasks=[('fixed_regression',['scripts/evaluate_natural.py','--models','baseline-expanded','baseline-prompt-v2','repair-v5',
         '--output','experiments/results/repair-v5-fixed.json','--analyze-each-model']),
         ('multi_turn_regression',['scripts/evaluate_repair_conversations.py']),
-        ('new_local_holdout',['scripts/evaluate_repair_holdout.py'])]
+        ('new_local_holdout',['scripts/evaluate_repair_holdout.py']),
+        ('additional_seeds',['scripts/evaluate_repair_seed_checks.py'])]
     for name,args in tasks:
         if (BASE/'cancel-evaluation.request').exists():phase('cancelled');return
         phase(name)
         with (BASE/(name+'.log')).open('w',encoding='utf-8') as stream:
             subprocess.run([sys.executable,*args],cwd=ROOT,stdout=stream,stderr=subprocess.STDOUT,check=True)
-    phase('completed',baseline_unchanged=True)
+    phase('exporting_synthetic_evidence')
+    subprocess.run([sys.executable,'scripts/export_repair_evidence.py'],cwd=ROOT,check=True)
+    phase('restoring_test_lab')
+    with (BASE/'lab-restored.log').open('a',encoding='utf-8') as output, (BASE/'lab-restored.stderr.log').open('a',encoding='utf-8') as error:
+        subprocess.Popen([sys.executable,'scripts/serve_persona_lab.py','--port','8002'],cwd=ROOT,
+            stdout=output,stderr=error,creationflags=subprocess.CREATE_NO_WINDOW if os.name=='nt' else 0)
+    opener=build_opener(ProxyHandler({}));ready=False
+    for _ in range(12):
+        try:
+            with opener.open('http://127.0.0.1:8002/api/health',timeout=2) as response:
+                health=json.load(response)
+            ready=health.get('status')=='ok' and health.get('development_only') is True
+            if ready:break
+        except (OSError,ValueError):pass
+        time.sleep(2)
+    if not ready:raise RuntimeError('Evaluations completed, but test lab health could not be confirmed')
+    phase('completed',baseline_unchanged=True,test_lab_ready=True,
+          dialogue_quality_review='pending_agent_and_human_review',lab_url='http://127.0.0.1:8002/')
 
 if __name__=='__main__':
     try:main()
