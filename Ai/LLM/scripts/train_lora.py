@@ -7,14 +7,15 @@ os.environ['PYTHONUTF8']='1'
 import torch
 from transformers import AutoTokenizer,Qwen3_5ForConditionalGeneration
 from peft import LoraConfig,get_peft_model,PeftModel
-from src.prompts import messages
 from src.chatml import encode_chatml
+from src.sft_tasks import training_prompt
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--smoke',action='store_true');parser.add_argument('--run',required=True)
     parser.add_argument('--resume');parser.add_argument('--epochs',type=int,default=3);parser.add_argument('--max-length',type=int,default=1024)
     parser.add_argument('--data',default='data/pilot_v2');parser.add_argument('--init-adapter');parser.add_argument('--lr',type=float,default=1e-4)
     parser.add_argument('--profile',choices=['baseline','natural-v1'],default='baseline')
+    parser.add_argument('--prompt-kind',choices=['legacy','character'],default='legacy')
     args=parser.parse_args(); dest=ROOT/'runs'/args.run
     if not 1<=args.epochs<=5: raise ValueError('Epochs must be 1..5')
     if dest.exists(): raise RuntimeError('Run exists; choose a new run name, including when resuming')
@@ -33,7 +34,7 @@ def main():
         rows=[json.loads(x) for x in (ROOT/args.data/f'{split}.jsonl').read_text(encoding='utf-8').splitlines()]
         batches=[]
         for row in rows:
-            encoded=encode_chatml(tok,messages(row['context'],row['user_text'],profile=args.profile),
+            encoded=encode_chatml(tok,training_prompt(row,args.profile,args.prompt_kind),
                 json.dumps(row['answer'],ensure_ascii=False,separators=(',',':')),args.max_length)
             ids,labels=encoded['input_ids'],encoded['labels']
             batches.append({'input_ids':torch.tensor([ids]),'labels':torch.tensor([labels]),'attention_mask':torch.ones(1,len(ids),dtype=torch.long)})
@@ -59,7 +60,7 @@ def main():
           'epochs':1 if args.smoke else args.epochs,'max_length':args.max_length,'trainable':sum(p.numel() for _,p in parameters),
           'data_manifest':json.loads((ROOT/args.data/'manifest.json').read_text(encoding='utf-8')),'smoke':args.smoke,
           'data':args.data,'init_adapter':args.init_adapter,'runtime_guidance':True,'shuffle_seed':42,
-          'prompt_profile':args.profile,'git_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
+          'prompt_profile':args.profile,'prompt_kind':args.prompt_kind,'git_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
           'base_revision':json.loads((ROOT/'config/qwen3.5-9b.json').read_text())['revision']}
     (dest/'config.json').write_text(json.dumps(conf,ensure_ascii=False,indent=2),encoding='utf-8')
     optimizer=torch.optim.AdamW([p for _,p in parameters],lr=args.lr)

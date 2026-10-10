@@ -1,0 +1,465 @@
+{
+  "seed": 42,
+  "max_length": 3072,
+  "human_review": false,
+  "filters": {
+    "raw_chatbot_pairs": 11823,
+    "filtered_text": 199,
+    "accepted_tone": 384,
+    "cross_split_utterances": 8,
+    "pool_limit_skipped": 50739,
+    "contract_filtered": 19,
+    "raw_empathy_dialogues": 24847,
+    "accepted_multiturn": 384,
+    "accepted_emotion": 384,
+    "roleplay_downloaded_but_not_trained": 32367,
+    "roleplay_exclusion_reason": "Fixed foreign identities and roleplay instructions conflict with HEALTHMON identity; no safe automatic mapping."
+  },
+  "experiments": {
+    "tone-v1": {
+      "version": "external_sft_tone-v1",
+      "sha256": {
+        "train": "bdb4336fff34bbc4a40b5717365e08aee705fa9922d961d4904b3ea14bc91d22",
+        "validation": "ebeac2bd2c69777ac51ef523dff660c98dad98db1d7147ad478d15083e5e0027",
+        "test": "c38c090959633a2bcf73c363e92d1e0e8271da554f99c438e86f20ffd9822288"
+      },
+      "splits": {
+        "train": {
+          "count": 40,
+          "sha256": "bdb4336fff34bbc4a40b5717365e08aee705fa9922d961d4904b3ea14bc91d22",
+          "token_min": 1240,
+          "token_max": 2423,
+          "groups": [
+            "chatbot-030adb90a7e1768a10f1919b2dab0319cfa3e3199c5927bc5123782815f3455f",
+            "chatbot-077c34d089d49c4e0c1312110411d868a9d72804eb4d4df025b0ba9f52305af5",
+            "chatbot-0ad7fc3f63e9960c8cfbc50e56a94b72dabe6bdee0be0437330dc43b77d42f36",
+            "chatbot-147d54a763a13d8c4d3e994671c124267a6eb9978f227fbf42ecd69a0f08c6f9",
+            "chatbot-19be510ac88bf4ac3f54c835a6ec7eb9573081b7b4b9730202d1325e662a84da",
+            "chatbot-1d00d608be9e3768b41a1732f388affa6324f4dc11e90dd92eeeaf57aff34d40",
+            "chatbot-1ed59c49b948a0f2533f3ecb5b094c0946cdbe942be7a7151a6acf2bbb1ffa12",
+            "chatbot-24c23909f27984d7a5656b20dbb1becf860719616a72ffd8ba63b63c9a89fa83",
+            "chatbot-322886d29213470fce68256276943c1ec4d135e227a386070cc00b107fa86c1a",
+            "chatbot-37ea800502cbfe9597f42a8ba5332b2ade39e72d453afc65db7372e351d589ff",
+            "chatbot-426dd34afe8ae94a03501949aaba585f5a2bebdecff6bed8f0d50a26e590f6b2",
+            "chatbot-43cd27802a516aa71f9187a78544d2b1c99968eb1ae7a759e994252b6d1e79b3",
+            "chatbot-5bcbdcf4f5fbe209fa89b01f97b6e445de1e4acbbc1bcd255b2065ba6ad1df77",
+            "chatbot-5e4be0a90e604ef4c95a3e17499af4782d70e2f75e049116337049619050ee15",
+            "chatbot-6cfd2257ee73a53ad953d931beec1a8ac0fa57fb03a350b263d14591b17cfe37",
+            "chatbot-7642dfea0809d1b6055be8320b91b6f2abf8b952481f3cfbc379ecedd1316028",
+            "chatbot-76597329ecc5a14e6fb53263b044b153bf08a1776602aa7090a6a26184d80c51",
+            "chatbot-7a77dbe147be9bd9d127eadc2a8343839bdfafa9bd526bc1bdbf6bd7f7e7b10c",
+            "chatbot-7e17f76de2c9d44c1e144c26bb028319e41f53f05fd4f8c47f7bcf1f9132a73f",
+            "chatbot-7e528b11ea0f8f8492ff91d269491e7053c1b2f70f867533f519d580e3d94631",
+            "chatbot-85d9e8c7fee8a6ce7fb0b1f5b84a98967a2a80062c627567508bd0816fcadf01",
+            "chatbot-86e417c0e60a1245ab7ae8431a1319ea621fa05d947c9a4eaa59edbbf747303d",
+            "chatbot-90c06be59a341c4c82d330d21a8dcf6e02e47d76601a6ddd69917380cfd29f66",
+            "chatbot-9375a70c093905c64bab9d5e0729e8ebd2b7630f5253442cab29ba30638dca8a",
+            "chatbot-93f3d04dcc3e7b2492e2792a3995f672f21b92bfedefa625dd5eb09b13ad4a9d",
+            "chatbot-9fd026850ba7ad5f060064b12a38044f1414129d76a6b9c79a6a09b7b2ca1caf",
+            "chatbot-a5fec3db9953feec1bda6d7fd3205870f5273746740654d0bd7a221115ccd5d0",
+            "chatbot-b5f6b8116c7ef2a16d2ab72763e8ed07152e8fc17a21ab3d4ff972d516913ede",
+            "chatbot-c52bab828b34bf3fafbde1ee536dc9a7615f147cf03efea928ebef1ec630c368",
+            "chatbot-c5fd1fe2b0d6e353ad2147b4cb74b04b831f85e96c585852c9d91a9a440d96ed",
+            "chatbot-dff00ff50fd6109a215f2ba41c23e6c07b5c0a3bb2df5366e6b1aa858e060c54",
+            "chatbot-f5185fcb6ebde926a4d198840e30daaf29200ac8b5f2ef36c654b72dc109f162",
+            "identity",
+            "memory_present",
+            "state_printer",
+            "style_pair"
+          ],
+          "sources": {
+            "songys/Chatbot_data": 32,
+            "identity": 2,
+            "style_pair": 3,
+            "memory_present": 1,
+            "state_printer": 2
+          }
+        },
+        "validation": {
+          "count": 8,
+          "sha256": "ebeac2bd2c69777ac51ef523dff660c98dad98db1d7147ad478d15083e5e0027",
+          "token_min": 2400,
+          "token_max": 2410,
+          "groups": [
+            "chatbot-00c0794205ba8ca1ab44ebc7eb22abf23a5a7421db22086c5160bd3eb7a44c46",
+            "chatbot-3c56d1b7f420bf33ef1a5fe07391301afd5b28a2defb7e840d77260a65e110f6",
+            "chatbot-518b661b0f2f7e01b50ead8f8562abf6312a2408fc1285d493fe4cbb255887a8",
+            "chatbot-71ed9b49b76337fc07a5495fee78bdfa1f79f2186dd29febf8e9df2af04a8f28",
+            "chatbot-8a6185670127615da4a91222a51c418d6d099fa61d238614c6be565dac2ed922",
+            "chatbot-a633a5bfc523103dc564f7c943b401454c2af11d2ff36fbe1056367e84499bad",
+            "chatbot-bb25d54082ede68173bc71b60fc3c045b29e66bedbed21f7d88d28b40199df8d",
+            "chatbot-d213298b36658060537034dd96a0db427048b36fed73d170ddb28abf7b05564a"
+          ],
+          "sources": {
+            "songys/Chatbot_data": 8
+          }
+        },
+        "test": {
+          "count": 8,
+          "sha256": "c38c090959633a2bcf73c363e92d1e0e8271da554f99c438e86f20ffd9822288",
+          "token_min": 2398,
+          "token_max": 2411,
+          "groups": [
+            "chatbot-01b6b5fe21a226531f6d1026d10fd108cf3e0d90403f6dfd5648db4295d72171",
+            "chatbot-1474fedd5ccb74cfd845e8528400d762b2b3f8c935c8fbf65d28f117895f5744",
+            "chatbot-2478af91938d10f3718e2899de0b818e5c9ea83cb42494aa6d9531c647d3d8ed",
+            "chatbot-399cbbd5a7730ce670c31107e6e8296975050db152f7edf4ba2b08985703aa79",
+            "chatbot-792e3c708f632e961b6aa8447c596324f7c0a3af992e6f1f877f671d7975b159",
+            "chatbot-9e4e9d82bd84d1ef4b115cd5edf8cb030ab17aaf6276820416f6f3200f8f3c29",
+            "chatbot-e866aa622a9ed4da3e7b22dd707c29d67b535bcd0e1ae212bf9ad77cf128fa96",
+            "chatbot-fbf4418b026481eaa97b0771c49b2f45f44dafc5c2de430f1d732853404dc38f"
+          ],
+          "sources": {
+            "songys/Chatbot_data": 8
+          }
+        }
+      },
+      "prompt_kind": "character",
+      "profile": "natural-v1",
+      "human_review": false,
+      "baseline_retention_count": 8,
+      "no_truncation": true,
+      "group_leakage": false,
+      "training_scope": "noncommercial local research",
+      "sources_manifest": "experiments/external-dialogue-sources.json"
+    },
+    "emotion-v2": {
+      "version": "external_sft_emotion-v2",
+      "sha256": {
+        "train": "495ceccadb687322e25c4af6e5842d3a4b4fc4c7e283229d5e12d394d22ace75",
+        "validation": "a4d397f5b19aff53233fb13de3dafca0bd0024d10e9c40a7ee5a786a5fcac182",
+        "test": "58469480f46f374e58e6c53f622a277ef37f4209dbf1d06a61b409464df5fee7"
+      },
+      "splits": {
+        "train": {
+          "count": 40,
+          "sha256": "495ceccadb687322e25c4af6e5842d3a4b4fc4c7e283229d5e12d394d22ace75",
+          "token_min": 387,
+          "token_max": 2470,
+          "groups": [
+            "authored-analysis-train-0",
+            "authored-analysis-train-1",
+            "authored-analysis-train-2",
+            "authored-analysis-train-3",
+            "authored-analysis-train-4",
+            "authored-analysis-train-5",
+            "authored-analysis-train-6",
+            "authored-analysis-train-7",
+            "empathy-03056b534835f90f1036c6fd98e69226d957f460bb1b9ab1ae9d9f497bf1c671",
+            "empathy-0b5abe55cd231f9528ac7f536718f9f97063fb6c847f4df5605b2141b970283f",
+            "empathy-0d5472ceb5bf2a65f6d12c0fe94c03bbd836eba03019aa42f9660ca928d5e7f7",
+            "empathy-1052f20013dc7cc6ecfbe324e583991c213f2fa76a88ed26ed434acbebea943c",
+            "empathy-3f6d028697030826ece6d8d655b925a99bedc2f4fa4f21775b5ea74bda125603",
+            "empathy-4e06d8af7183044a220bb0cfd916f08383f2bf50a55002fcfbe3c72ade767e73",
+            "empathy-6a3c17cfc54bfa29553539600b001cfad794ffeb16969c91e355c764e26d5e0e",
+            "empathy-77cfa099ef549ad33d8230f38bab05416053afb062ce8b1e5eee3ea5f46fcabe",
+            "empathy-78eb112a81183f4beaa619e0b12c4c3efffad726d8ec924f24f3cdc959194c8e",
+            "empathy-8d4985b7fe7143d5ef1233db7480d58f660e35d28a5fad49bde73023eb8af2e1",
+            "empathy-9121154fcf6cc64bd6f14291ddd536f2534fff624347d27477366c06cb9a75fa",
+            "empathy-93ba4e4b0d88d422cbe9b269b30ae4affbac0c95d423bcb5577f4a810d6436f2",
+            "empathy-96b8cb3d04b3af296b173d0534458530dde4c280d27f0ab467c7e589ee65fe33",
+            "empathy-97ef9a056453c833612dd66e9687079d09a7745c41470e15d71e7a3d90c6af4d",
+            "empathy-9b3b3819aece3823a71800f2406d5e68b79adbe60fa1f882111784f6b44922c1",
+            "empathy-a11a08b71d26e8208213f5573cf711823406762a3d895983d20e3467517261da",
+            "empathy-b07881cfa1348a1056f7a0d6bf639abc7de9506a49ac56a6de66b0749ca016ea",
+            "empathy-bb0b1f65a4f0b055469daa21a0c1bbc93a0c14be9ef579a1987ae7c28668eff8",
+            "empathy-c841dcadaaf78241ea158a2e157dcdb5f093fa34ac92ab56add8594eb0d9f0a3",
+            "empathy-d2a4abaaa964de74b030e708002e91557afcca53ec388b752bd0513151f2f798",
+            "empathy-e1be76e5ea6f035a64cfcd16edcb9dc846f4ac191e6a1b508ad43d2789ce3392",
+            "empathy-e4170e342b793055fe62299f3fd677ba31578f7311d7ecde4c4708f8841b0fd9",
+            "empathy-f0b5c9b47a1a12e36c63a4450a7b8eb18fde4fe459407c54519046065739ecaf",
+            "empathy-f0cbd7217cb638cae5063c73e4b71315b1979c95ac46cb363cff2841d80b9f46",
+            "identity",
+            "memory_present",
+            "state_printer",
+            "style_pair"
+          ],
+          "sources": {
+            "passing2961/KorEmpatheticDialogues": 24,
+            "agent_authored_schema_example": 8,
+            "identity": 2,
+            "style_pair": 3,
+            "memory_present": 1,
+            "state_printer": 2
+          }
+        },
+        "validation": {
+          "count": 8,
+          "sha256": "a4d397f5b19aff53233fb13de3dafca0bd0024d10e9c40a7ee5a786a5fcac182",
+          "token_min": 387,
+          "token_max": 2448,
+          "groups": [
+            "authored-analysis-validation-0",
+            "authored-analysis-validation-1",
+            "empathy-54537800dfe67b7657728488b02e04f0e34ee8f25bfe14e9b36712149831fd98",
+            "empathy-71a4a59bbc45e623a99981cceafc405fd5737f775a7f5ed69237d54fef6b08e2",
+            "empathy-7c2ae136e6774307069ba09f219732ffc294983257fe3838799598adbb0b3b40",
+            "empathy-a39e4e3374b6e93d4cd2dba082536bfbba1236b6da9f9c617a36239970b74d13",
+            "empathy-b62691b37127470cae0d33e898743ace1e1498c3a530cb0fc82a041de9f37cc0",
+            "empathy-c8a4024280d9794d00d44d3dfd8840d6e92f330f5b0618626e4ca82348dcfa8a"
+          ],
+          "sources": {
+            "passing2961/KorEmpatheticDialogues": 6,
+            "agent_authored_schema_example": 2
+          }
+        },
+        "test": {
+          "count": 8,
+          "sha256": "58469480f46f374e58e6c53f622a277ef37f4209dbf1d06a61b409464df5fee7",
+          "token_min": 391,
+          "token_max": 2440,
+          "groups": [
+            "authored-analysis-test-0",
+            "authored-analysis-test-1",
+            "empathy-2cb1fa5c1c8f2493e2c0ff58286206fe515413ceba692e7db2c41b437363895c",
+            "empathy-3ad626a846356ecb039513f636a9a9ce642c16dd855cd824db83c7dd432514b4",
+            "empathy-bd0eb193b4a3d1c84490db4a61ba3e1ea757502cb627ad0b5a818821f2f4db0b",
+            "empathy-c1a29ec0f03187ba96b23407a13e192f7a4b5eb2e3015c02a4e7c872797f9c97",
+            "empathy-e78e04934769ad9e118ca4ef6225fecf8ef087b634d1317e35a10171b253245d",
+            "empathy-ff57b4f266ffdc751351b811cb7db3b10fdf3c4d77683ad26a4663acea207591"
+          ],
+          "sources": {
+            "passing2961/KorEmpatheticDialogues": 6,
+            "agent_authored_schema_example": 2
+          }
+        }
+      },
+      "prompt_kind": "character",
+      "profile": "natural-v1",
+      "human_review": false,
+      "baseline_retention_count": 8,
+      "no_truncation": true,
+      "group_leakage": false,
+      "training_scope": "noncommercial local research",
+      "sources_manifest": "experiments/external-dialogue-sources.json"
+    },
+    "mixed-v3": {
+      "version": "external_sft_mixed-v3",
+      "sha256": {
+        "train": "7a134e653881d1478e7d41eab0bc3978f323b3c9440248a0a1fa6a03d17aba46",
+        "validation": "7a81630910f8107f9c7521f30fd7951f8ddc7f8dc4b156a3f2d3932f289c1c9f",
+        "test": "a376238d8e8702f6de832b5bf5111e6488e764b0d3ca7745f0ebbfa0698bf5d9"
+      },
+      "splits": {
+        "train": {
+          "count": 40,
+          "sha256": "7a134e653881d1478e7d41eab0bc3978f323b3c9440248a0a1fa6a03d17aba46",
+          "token_min": 387,
+          "token_max": 2480,
+          "groups": [
+            "authored-analysis-train-0",
+            "authored-analysis-train-1",
+            "authored-analysis-train-2",
+            "authored-analysis-train-3",
+            "authored-persona-0",
+            "authored-persona-1",
+            "chatbot-1d00d608be9e3768b41a1732f388affa6324f4dc11e90dd92eeeaf57aff34d40",
+            "chatbot-1ed59c49b948a0f2533f3ecb5b094c0946cdbe942be7a7151a6acf2bbb1ffa12",
+            "chatbot-322886d29213470fce68256276943c1ec4d135e227a386070cc00b107fa86c1a",
+            "chatbot-5bcbdcf4f5fbe209fa89b01f97b6e445de1e4acbbc1bcd255b2065ba6ad1df77",
+            "chatbot-5e4be0a90e604ef4c95a3e17499af4782d70e2f75e049116337049619050ee15",
+            "chatbot-7642dfea0809d1b6055be8320b91b6f2abf8b952481f3cfbc379ecedd1316028",
+            "chatbot-7a77dbe147be9bd9d127eadc2a8343839bdfafa9bd526bc1bdbf6bd7f7e7b10c",
+            "chatbot-85d9e8c7fee8a6ce7fb0b1f5b84a98967a2a80062c627567508bd0816fcadf01",
+            "chatbot-90c06be59a341c4c82d330d21a8dcf6e02e47d76601a6ddd69917380cfd29f66",
+            "chatbot-b5f6b8116c7ef2a16d2ab72763e8ed07152e8fc17a21ab3d4ff972d516913ede",
+            "chatbot-c52bab828b34bf3fafbde1ee536dc9a7615f147cf03efea928ebef1ec630c368",
+            "chatbot-c5fd1fe2b0d6e353ad2147b4cb74b04b831f85e96c585852c9d91a9a440d96ed",
+            "empathy-03056b534835f90f1036c6fd98e69226d957f460bb1b9ab1ae9d9f497bf1c671",
+            "empathy-1052f20013dc7cc6ecfbe324e583991c213f2fa76a88ed26ed434acbebea943c",
+            "empathy-3f6d028697030826ece6d8d655b925a99bedc2f4fa4f21775b5ea74bda125603",
+            "empathy-4e06d8af7183044a220bb0cfd916f08383f2bf50a55002fcfbe3c72ade767e73",
+            "empathy-77cfa099ef549ad33d8230f38bab05416053afb062ce8b1e5eee3ea5f46fcabe",
+            "empathy-78eb112a81183f4beaa619e0b12c4c3efffad726d8ec924f24f3cdc959194c8e",
+            "empathy-8d4985b7fe7143d5ef1233db7480d58f660e35d28a5fad49bde73023eb8af2e1",
+            "empathy-9121154fcf6cc64bd6f14291ddd536f2534fff624347d27477366c06cb9a75fa",
+            "empathy-93ba4e4b0d88d422cbe9b269b30ae4affbac0c95d423bcb5577f4a810d6436f2",
+            "empathy-bb0b1f65a4f0b055469daa21a0c1bbc93a0c14be9ef579a1987ae7c28668eff8",
+            "empathy-e4170e342b793055fe62299f3fd677ba31578f7311d7ecde4c4708f8841b0fd9",
+            "empathy-f0b5c9b47a1a12e36c63a4450a7b8eb18fde4fe459407c54519046065739ecaf",
+            "identity",
+            "memory_present",
+            "state_printer",
+            "style_pair"
+          ],
+          "sources": {
+            "songys/Chatbot_data": 12,
+            "passing2961/KorEmpatheticDialogues": 12,
+            "agent_authored_schema_example": 4,
+            "agent_authored_stat_conditioned": 4,
+            "identity": 2,
+            "style_pair": 3,
+            "memory_present": 1,
+            "state_printer": 2
+          }
+        },
+        "validation": {
+          "count": 8,
+          "sha256": "7a81630910f8107f9c7521f30fd7951f8ddc7f8dc4b156a3f2d3932f289c1c9f",
+          "token_min": 387,
+          "token_max": 2448,
+          "groups": [
+            "authored-analysis-validation-0",
+            "authored-analysis-validation-1",
+            "chatbot-00c0794205ba8ca1ab44ebc7eb22abf23a5a7421db22086c5160bd3eb7a44c46",
+            "chatbot-3c56d1b7f420bf33ef1a5fe07391301afd5b28a2defb7e840d77260a65e110f6",
+            "chatbot-a633a5bfc523103dc564f7c943b401454c2af11d2ff36fbe1056367e84499bad",
+            "empathy-54537800dfe67b7657728488b02e04f0e34ee8f25bfe14e9b36712149831fd98",
+            "empathy-7c2ae136e6774307069ba09f219732ffc294983257fe3838799598adbb0b3b40",
+            "empathy-c8a4024280d9794d00d44d3dfd8840d6e92f330f5b0618626e4ca82348dcfa8a"
+          ],
+          "sources": {
+            "songys/Chatbot_data": 3,
+            "passing2961/KorEmpatheticDialogues": 3,
+            "agent_authored_schema_example": 2
+          }
+        },
+        "test": {
+          "count": 8,
+          "sha256": "a376238d8e8702f6de832b5bf5111e6488e764b0d3ca7745f0ebbfa0698bf5d9",
+          "token_min": 391,
+          "token_max": 2440,
+          "groups": [
+            "authored-analysis-test-0",
+            "authored-analysis-test-1",
+            "chatbot-399cbbd5a7730ce670c31107e6e8296975050db152f7edf4ba2b08985703aa79",
+            "chatbot-792e3c708f632e961b6aa8447c596324f7c0a3af992e6f1f877f671d7975b159",
+            "chatbot-fbf4418b026481eaa97b0771c49b2f45f44dafc5c2de430f1d732853404dc38f",
+            "empathy-2cb1fa5c1c8f2493e2c0ff58286206fe515413ceba692e7db2c41b437363895c",
+            "empathy-bd0eb193b4a3d1c84490db4a61ba3e1ea757502cb627ad0b5a818821f2f4db0b",
+            "empathy-e78e04934769ad9e118ca4ef6225fecf8ef087b634d1317e35a10171b253245d"
+          ],
+          "sources": {
+            "songys/Chatbot_data": 3,
+            "passing2961/KorEmpatheticDialogues": 3,
+            "agent_authored_schema_example": 2
+          }
+        }
+      },
+      "prompt_kind": "character",
+      "profile": "natural-v1",
+      "human_review": false,
+      "baseline_retention_count": 8,
+      "no_truncation": true,
+      "group_leakage": false,
+      "training_scope": "noncommercial local research",
+      "sources_manifest": "experiments/external-dialogue-sources.json"
+    },
+    "multiturn-v4": {
+      "version": "external_sft_multiturn-v4",
+      "sha256": {
+        "train": "44a951622d12e88eb575bc36163bc6b9f0ed30ea5ad7811b5e3e0274eaaec450",
+        "validation": "2a46ee81dc52fe8e7aadd5b10059c8650d3bef7176fa9bce167018379c375e66",
+        "test": "9fe8c3f3eb2637857662ad30374892f65663b24df5b5456c62e1bf691cd2c037"
+      },
+      "splits": {
+        "train": {
+          "count": 40,
+          "sha256": "44a951622d12e88eb575bc36163bc6b9f0ed30ea5ad7811b5e3e0274eaaec450",
+          "token_min": 1240,
+          "token_max": 2507,
+          "groups": [
+            "authored-memory-train-0",
+            "authored-memory-train-1",
+            "authored-memory-train-2",
+            "authored-memory-train-3",
+            "authored-memory-train-4",
+            "authored-memory-train-5",
+            "authored-memory-train-6",
+            "authored-memory-train-7",
+            "empathy-0b5abe55cd231f9528ac7f536718f9f97063fb6c847f4df5605b2141b970283f",
+            "empathy-18bb47e3297e6d582ea56bcf6823e09528fe6dc3a280ade459ad791e0d4268ab",
+            "empathy-2ddc36f7c588aa665d743ebe53cce4ee4f5f2c1891c324ec5675645b52335f01",
+            "empathy-3f6d028697030826ece6d8d655b925a99bedc2f4fa4f21775b5ea74bda125603",
+            "empathy-65d5b9a461529a91daea3ec7db1304281f7162d5de59dfa4d6681433197430ef",
+            "empathy-6a3c17cfc54bfa29553539600b001cfad794ffeb16969c91e355c764e26d5e0e",
+            "empathy-74943d796a3edd7ea9d2029769084fffc097610062aa5e4a5e0ea0a5884d46c8",
+            "empathy-7754c3ab474849b45c74d2f560b5c2110f1d76317374d49653b747a6c80c3532",
+            "empathy-77cfa099ef549ad33d8230f38bab05416053afb062ce8b1e5eee3ea5f46fcabe",
+            "empathy-7a945605a7d26505c89bd97f27efb0d6c21e27ba4325ad7b3827e88b27e68f87",
+            "empathy-7a977f60c032e53fae31dca46f5eecf5cc4c2af5e8438f56886ca15fa6822ac1",
+            "empathy-822d5cf54a9a4e0e9a9964ede96f818b380ef2c259bda8d20569dda439408032",
+            "empathy-83f7cb9e5b3a4f2b49f537832e550c7e3252551bed3b40595e5bdd7e647c03f8",
+            "empathy-9121154fcf6cc64bd6f14291ddd536f2534fff624347d27477366c06cb9a75fa",
+            "empathy-b0eee68308a75241ad8df263d604a02486ee8d64619489ca7443ee7b764bb22e",
+            "empathy-b5f0b4ff2b954bb5385a12954ed2d546f0de2f0f5175f6452cec9ccd56ddbf1c",
+            "empathy-bbcd5298e6473c06899eb8b5f9bab1c8642144edd459475554660775ddb8f964",
+            "empathy-bcec1763509691edd9290fc2e51441b25e69ae8679e2ba10112cc779e52d250e",
+            "empathy-d273c89416ec778f9c54ca60bfeb121274c7f7c17abdd9e282515c49b420400e",
+            "empathy-ddc4eb25e1a14b0c759181d719e5e6f89fb13e172c61d504c2087aebf46480f0",
+            "empathy-ddfaba2705e9b3c361616fb3a54fe722fcaa6fec24e156db4e11ac5720ce1c06",
+            "empathy-e1be76e5ea6f035a64cfcd16edcb9dc846f4ac191e6a1b508ad43d2789ce3392",
+            "empathy-e7bc28d522d8fd6a0fa7197b156cacb2d52e13b43036c69b5fe61caed9a8fa79",
+            "empathy-f0cbd7217cb638cae5063c73e4b71315b1979c95ac46cb363cff2841d80b9f46",
+            "identity",
+            "memory_present",
+            "state_printer",
+            "style_pair"
+          ],
+          "sources": {
+            "passing2961/KorEmpatheticDialogues": 24,
+            "agent_authored_memory_example": 8,
+            "identity": 2,
+            "style_pair": 3,
+            "memory_present": 1,
+            "state_printer": 2
+          }
+        },
+        "validation": {
+          "count": 8,
+          "sha256": "2a46ee81dc52fe8e7aadd5b10059c8650d3bef7176fa9bce167018379c375e66",
+          "token_min": 2444,
+          "token_max": 2519,
+          "groups": [
+            "authored-memory-validation-0",
+            "authored-memory-validation-1",
+            "empathy-0125d0a33ad6dff3497fc7d509fd3f5b0ee6207471386b5630fa3173e04863f2",
+            "empathy-58b4aac646c1fc78cceb8802264e1a47259bd7739d989ecc7b7ea413d5055d52",
+            "empathy-6d9e7fd00d1a3e4eb6dd9a9cd8228096048ad607e25b0be653e2914582fdb09a",
+            "empathy-743e0cfe53ff2d88192f399571d806905cf205af17572e1c81af7bd2c2c41c46",
+            "empathy-d7783bf6266819ef5c58ba11bd37ff26a452c035cdc16975a4306c3e100e5960",
+            "empathy-f93eab249002933d98c8bcc064f1a016efb497e709c8410bb1990405a7629e47"
+          ],
+          "sources": {
+            "passing2961/KorEmpatheticDialogues": 6,
+            "agent_authored_memory_example": 2
+          }
+        },
+        "test": {
+          "count": 8,
+          "sha256": "9fe8c3f3eb2637857662ad30374892f65663b24df5b5456c62e1bf691cd2c037",
+          "token_min": 2298,
+          "token_max": 2576,
+          "groups": [
+            "authored-memory-test-0",
+            "authored-memory-test-1",
+            "empathy-2215a3a66796a20135a9bb726203e4daa428d4ea51d9b4fd4be8f384d3f8fe82",
+            "empathy-630fbdd95d7409fe26d3795841034704f42cf2d7acfb878000917430e4ce8b35",
+            "empathy-9dd51f84cba45ddb90a343775cf4dd7616ba0d92b7ec7185bb81868833dff54e",
+            "empathy-9f7cf59ff6b6d7c46b334644362e60a187c80954b6c582f45e12acc2c963e4c0",
+            "empathy-bd0eb193b4a3d1c84490db4a61ba3e1ea757502cb627ad0b5a818821f2f4db0b",
+            "empathy-eca8eb9cabbdfa1a476c8ca3ab09d30ac2bafb674d491dde4790b5b3b9296b84"
+          ],
+          "sources": {
+            "passing2961/KorEmpatheticDialogues": 6,
+            "agent_authored_memory_example": 2
+          }
+        }
+      },
+      "prompt_kind": "character",
+      "profile": "natural-v1",
+      "human_review": false,
+      "baseline_retention_count": 8,
+      "no_truncation": true,
+      "group_leakage": false,
+      "training_scope": "noncommercial local research",
+      "sources_manifest": "experiments/external-dialogue-sources.json"
+    }
+  },
+  "raw_or_derived_data_published": false,
+  "limitations": [
+    "Automated filters are not a complete privacy or semantic review.",
+    "Small feasibility datasets; no independent benchmark or production approval.",
+    "Group split and substantial exact utterance overlap checks do not detect all semantic paraphrases."
+  ]
+}

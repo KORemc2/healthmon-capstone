@@ -7,6 +7,32 @@ from .model_registry import read_registry, entry
 from .persona_runtime import persona_messages
 
 
+def analyze_model(runtime, model_id, text, settings):
+    """Run the existing Analyzer using the requested adapter, then restore selection."""
+    from types import SimpleNamespace
+    from .character_lab_models import ConversationAnalyzer
+    from .model_registry import ROOT
+    model = entry(model_id, allow_rejected=True)
+    previous = []
+    def load():
+        runtime._load()
+        loaded = runtime.backend.model
+        previous.append(loaded.active_adapter)
+        key = 'compare_' + hashlib.sha256(model['adapter_path'].encode()).hexdigest()[:12]
+        if key not in loaded.peft_config:
+            loaded.load_adapter(str(ROOT / model['adapter_path']), adapter_name=key)
+        loaded.set_adapter(key)
+        loaded.eval()
+        return model['adapter_path']
+    proxy = SimpleNamespace(lock=runtime.lock, backend=runtime.backend, _load=load)
+    try:
+        return ConversationAnalyzer(proxy).analyze(text, 'qwen', settings)
+    finally:
+        if previous:
+            with runtime.lock:
+                runtime.backend.model.set_adapter(previous[-1])
+
+
 def compare_models(runtime, context, text, model_ids, settings, mode='qwen'):
     registry = read_registry()
     models = [entry(key, registry, require_files=mode == 'qwen', allow_rejected=True) for key in model_ids]

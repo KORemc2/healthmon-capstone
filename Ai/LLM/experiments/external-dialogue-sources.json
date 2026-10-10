@@ -1,0 +1,88 @@
+{
+  "version": "external-dialogue-20261010",
+  "sources": [
+    {
+      "id": "songys/Chatbot_data",
+      "revision": "4cf20d13fc46f5037fd1c531cd566e2dd9f72974",
+      "license": "MIT",
+      "use": "Authored Korean daily dialogue; retain author and license.",
+      "files": [
+        {
+          "file": "data/external_raw/chatbot/ChatbotData.csv",
+          "url": "https://raw.githubusercontent.com/songys/Chatbot_data/4cf20d13fc46f5037fd1c531cd566e2dd9f72974/ChatbotData.csv",
+          "bytes": 889842,
+          "sha256": "287eb129695b577321c80ad397bb3c2279164d4ca577874d129fd3db5b30afe2"
+        },
+        {
+          "file": "data/external_raw/chatbot/README.md",
+          "url": "https://raw.githubusercontent.com/songys/Chatbot_data/4cf20d13fc46f5037fd1c531cd566e2dd9f72974/README.md",
+          "bytes": 2049,
+          "sha256": "4a4e27e4a451bbc340f77a99de898f43a29d94ff39bd1c8556cc44d8bbc4038f"
+        },
+        {
+          "file": "data/external_raw/chatbot/LICENSE",
+          "url": "https://raw.githubusercontent.com/songys/Chatbot_data/4cf20d13fc46f5037fd1c531cd566e2dd9f72974/LICENSE",
+          "bytes": 1068,
+          "sha256": "1d8084ef9ea897ec462ce6c0e538f97967894699aac65c933804062714d3330a"
+        }
+      ]
+    },
+    {
+      "id": "passing2961/KorEmpatheticDialogues",
+      "revision": "5373a3e0c453ed85ae842c5303beb6b19df7323a",
+      "license": "cc-by-nc-4.0",
+      "use": "Local noncommercial research only; no raw data, derived rows or adapters published.",
+      "files": [
+        {
+          "file": "data/external_raw/kor_empathy/README.md",
+          "url": "https://huggingface.co/datasets/passing2961/KorEmpatheticDialogues/resolve/5373a3e0c453ed85ae842c5303beb6b19df7323a/README.md",
+          "bytes": 2163,
+          "sha256": "49ae2524604504d5d80664ed1d541b134373b5fdb28dd4a19e9c1e2645bcdf26"
+        },
+        {
+          "file": "data/external_raw/kor_empathy/train.json",
+          "url": "https://huggingface.co/datasets/passing2961/KorEmpatheticDialogues/resolve/5373a3e0c453ed85ae842c5303beb6b19df7323a/train.json",
+          "bytes": 15786476,
+          "sha256": "adda1c0ee208b83826049b6aa599339e465cc5a327990bae7b180f7e6622e23d"
+        },
+        {
+          "file": "data/external_raw/kor_empathy/valid.json",
+          "url": "https://huggingface.co/datasets/passing2961/KorEmpatheticDialogues/resolve/5373a3e0c453ed85ae842c5303beb6b19df7323a/valid.json",
+          "bytes": 2334598,
+          "sha256": "f5d27aba2ffd1db38a0a17d405ae6b0f1cb887fc7ecf0a7b68aed254f7c92af4"
+        },
+        {
+          "file": "data/external_raw/kor_empathy/test.json",
+          "url": "https://huggingface.co/datasets/passing2961/KorEmpatheticDialogues/resolve/5373a3e0c453ed85ae842c5303beb6b19df7323a/test.json",
+          "bytes": 2255875,
+          "sha256": "ce8539f59ad15c72bdb087aaee72baa213b26ebf92789afe3c26651becb65007"
+        }
+      ]
+    },
+    {
+      "id": "huggingface-KREW/korean-role-playing",
+      "revision": "ceb55e96eddaee72dac60be5aa13e458125a1dc5",
+      "license": "apache-2.0",
+      "use": "Only general-roleplay subset; exclude couple/YouTube/EXA identities.",
+      "files": [
+        {
+          "file": "data/external_raw/roleplay/README.md",
+          "url": "https://huggingface.co/datasets/huggingface-KREW/korean-role-playing/resolve/ceb55e96eddaee72dac60be5aa13e458125a1dc5/README.md",
+          "bytes": 5879,
+          "sha256": "0dacfdc09f3abb0fc72514c642f2cdec65f949773b5e1563aefd328637a79ad8"
+        },
+        {
+          "file": "data/external_raw/roleplay/general-roleplay-data/train-00000-of-00001.parquet",
+          "url": "https://huggingface.co/datasets/huggingface-KREW/korean-role-playing/resolve/ceb55e96eddaee72dac60be5aa13e458125a1dc5/general-roleplay-data/train-00000-of-00001.parquet",
+          "bytes": 96374557,
+          "sha256": "bfc1211deaf3ffa6dc185e72b12e115b6ecdbe1d3940fba1ec1534c7877e29a4"
+        }
+      ]
+    }
+  ],
+  "paid_api_used": false,
+  "download_authentication_used": false,
+  "raw_data_published": false,
+  "derivatives_published": false,
+  "scope": "Local noncommercial research experiments; no production/commercial approval."
+}

@@ -24,6 +24,8 @@ def main():
     hits=[]
     for name in names:
         path=repo/name
+        if '/data/external_raw/' in name or '/data/external_sft_' in name:
+            hits.append({'file':name,'kind':'local_research_dataset'})
         if path.name=='.env' or path.suffix in ('.safetensors','.pt','.sqlite3','.gguf'):
             hits.append({'file':name,'kind':'private_runtime_file'})
         try:value=path.read_text(encoding='utf-8')
