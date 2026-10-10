@@ -40,7 +40,7 @@
       "analysis_adapter_coverage": "Analyzer checks used preserved baseline, not trained candidate"
     },
     "tone-v1": {
-      "status": "Candidate",
+      "status": "Rejected",
       "adapter_path": "runs/dialogue-tone-v1-20261010/checkpoint-epoch-1",
       "adapter_sha256": "8ddab1dc4e6e9f2fe5300cebba46a4d17558733056985d56a4ed64266ca8dbec",
       "prompt_profile": "natural-v1",
@@ -50,12 +50,15 @@
       "human_review": false,
       "production_approved": false,
       "compatibility_passed": false,
-      "evaluation_status": "pending",
+      "evaluation_status": "completed_development_and_local_holdout",
       "license_scope": "Local noncommercial research; no dataset or adapter publication",
-      "note": "Independent initialization from preserved baseline; no automatic promotion."
+      "note": "Independent initialization from preserved baseline; no automatic promotion.",
+      "decision": "Unsupported absolution in distress response; insufficient detail and awkward high-affinity dialogue.",
+      "evaluation_path": "experiments/results/tone-v1-evaluation.json",
+      "structural_checks_recorded": true
     },
     "emotion-v2": {
-      "status": "Candidate",
+      "status": "Rejected",
       "adapter_path": "runs/dialogue-emotion-v2-20261010/checkpoint-epoch-1",
       "adapter_sha256": "d68dae292d21a8e9b2db8eb774051e904b2b4b2623feb67d77f3927126b1b444",
       "prompt_profile": "natural-v1",
@@ -65,12 +68,15 @@
       "human_review": false,
       "production_approved": false,
       "compatibility_passed": false,
-      "evaluation_status": "pending",
+      "evaluation_status": "completed_development_and_local_holdout",
       "license_scope": "Local noncommercial research; no dataset or adapter publication",
-      "note": "Independent initialization from preserved baseline; no automatic promotion."
+      "note": "Independent initialization from preserved baseline; no automatic promotion.",
+      "decision": "Unsupported inference about friend and dismissive advice; more unnecessary questions; no overall improvement.",
+      "evaluation_path": "experiments/results/emotion-v2-evaluation.json",
+      "structural_checks_recorded": true
     },
     "mixed-v3": {
-      "status": "Candidate",
+      "status": "Rejected",
       "adapter_path": "runs/dialogue-mixed-v3-20261010/checkpoint-epoch-1",
       "adapter_sha256": "d5ce6db5cec18640e0b82e87cff25a894001be9bfec1484cfc8b032311a55e53",
       "prompt_profile": "natural-v1",
@@ -80,12 +86,15 @@
       "human_review": false,
       "production_approved": false,
       "compatibility_passed": false,
-      "evaluation_status": "pending",
+      "evaluation_status": "completed_development_and_local_holdout",
       "license_scope": "Local noncommercial research; no dataset or adapter publication",
-      "note": "Independent initialization from preserved baseline; no automatic promotion."
+      "note": "Independent initialization from preserved baseline; no automatic promotion.",
+      "decision": "Unsupported absolution; awkward high-affinity expression and insufficient requested detail.",
+      "evaluation_path": "experiments/results/mixed-v3-evaluation.json",
+      "structural_checks_recorded": true
     },
     "multiturn-v4": {
-      "status": "Candidate",
+      "status": "Rejected",
       "adapter_path": "runs/dialogue-multiturn-v4-20261010/checkpoint-epoch-1",
       "adapter_sha256": "7a1c0ed47667ab490e1278477dddcad55a4184797568a99f983ecc1a46f1839f",
       "prompt_profile": "natural-v1",
@@ -95,9 +104,12 @@
       "human_review": false,
       "production_approved": false,
       "compatibility_passed": false,
-      "evaluation_status": "pending",
+      "evaluation_status": "completed_development_and_local_holdout",
       "license_scope": "Local noncommercial research; no dataset or adapter publication",
-      "note": "Independent initialization from preserved baseline; no automatic promotion."
+      "note": "Independent initialization from preserved baseline; no automatic promotion.",
+      "decision": "Unsupported blame and sleep assumption; additional held-out fallback and more unnecessary questions.",
+      "evaluation_path": "experiments/results/multiturn-v4-evaluation.json",
+      "structural_checks_recorded": true
     }
   }
 }

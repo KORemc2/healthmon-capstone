@@ -39,4 +39,63 @@
 .\.venv\Scripts\python.exe scripts\train_lora.py --run dialogue-tone-v1-20261010 --data data/external_sft_tone-v1 --init-adapter runs/expanded-20260929/checkpoint-epoch-1 --profile natural-v1 --prompt-kind character --epochs 1 --max-length 3072 --lr 2e-5 --assistant-logits-only
 ```
 
-데이터 준비와 학습은 기존 버전 경로를 덮어쓰지 않는다. 새 실행에는 새 버전 이름이 필요하다. 고정 개발 사례16개에서 동일 문맥·seed·생성 설정으로 비교하고, `--analyze-each-model`은 후보 어댑터 자체의 Analyzer를 검사한다. 결과는 사람 검토 전까지 Candidate로 보관하며 Baseline 선택을 유지한다. 손실만으로 채택하지 않는다.
+데이터 준비와 학습은 기존 버전 경로를 덮어쓰지 않는다. 새 실행에는 새 버전 이름이 필요하다. 고정 개발 사례16개에서 동일 문맥·seed·생성 설정으로 비교하고, `--analyze-each-model`은 후보 어댑터 자체의 Analyzer를 검사한다. 개선 근거가 부족하거나 명확한 문제가 남은 후보는 Rejected로 기록하며 Baseline 선택을 유지한다. 손실만으로 채택하지 않는다.
+
+## 실제 학습 결과
+
+네 실험 모두 학습40/검증8, 1epoch, optimizer5회, 저장 후 재로드 검증을 완료했다. 아래 손실은 각 실험의 서로 다른 검증셋에서 측정했으므로 모델 순위에 사용하지 않는다. 실험별 설정·커밋·학습 이벤트는 `experiments/results/<ID>-training.json`에 있다.
+
+| ID | 검증 및 재로드 loss | 최대 GPU 할당 GiB | 로컬 체크포인트 |
+|---|---:|---:|---|
+| tone-v1 | 0.636613 | 20.635 | runs/dialogue-tone-v1-20261010/checkpoint-epoch-1 |
+| emotion-v2 | 0.767732 | 20.700 | runs/dialogue-emotion-v2-20261010/checkpoint-epoch-1 |
+| mixed-v3 | 0.716425 | 20.706 | runs/dialogue-mixed-v3-20261010/checkpoint-epoch-1 |
+| multiturn-v4 | 0.666036 | 20.753 | runs/dialogue-multiturn-v4-20261010/checkpoint-epoch-1 |
+
+실험은 공통 파이프라인 커밋 `fbef3f4`에서 독립 분기했다. 학습 시작 커밋은 순서대로 `95d4397`, `58598af`, `6abb9ac`, `2b32771`이며, 모든 초기 어댑터 SHA256은 동일하다. 저장된 네 어댑터와 Baseline의 SHA256은 서로 다르다. 각 학습 후 Baseline 파일의 해시가 변하지 않았음을 확인했다.
+
+브랜치는 사용자 Fork에 실제 Push했다: [Tone V1](https://github.com/KORemc2/healthmon-capstone/tree/exp/llm/tone-v1), [Emotion V2](https://github.com/KORemc2/healthmon-capstone/tree/exp/llm/emotion-v2), [Mixed V3](https://github.com/KORemc2/healthmon-capstone/tree/exp/llm/mixed-v3), [Multi-turn V4](https://github.com/KORemc2/healthmon-capstone/tree/exp/llm/multiturn-v4). 통합 코드와 모델 목록은 [feat/llm-natural-dialogue](https://github.com/KORemc2/healthmon-capstone/tree/feat/llm-natural-dialogue)에 있다. 현재 원본 PR 생성은 작업 범위에서 제외한다. 앞서 생성한 원본 PR #2는 닫았고 병합되지 않았다.
+
+## 보존과 검증
+
+기존 기준선 태그는 `baseline/llm-local-20261010`, 코드 커밋은 `41e21eb`이다. 로컬 백업 `E:\qwen-llm\backups\natural-baseline-20261010`의 2,992파일/24,303,647,199바이트를 SHA256으로 검증했다. 백업에는 비밀값이 있어 공개하지 않았다. Docker 데몬에 접속하지 못해 Docker 볼륨 백업은 확인하지 못했다. 기존 모델·원본 학습 데이터·운영 DB를 삭제하거나 덮어쓰지 않았다.
+
+복구는 `scripts/model_registry.py --select baseline-expanded`를 실행하고 서버를 재시작한다. 코드 복구·개별 모델·DB 복원 절차는 `docs/NATURAL_DIALOGUE_WORK.md`에 있다. 현재 원본 구현 폴더도 보존돼 있다.
+
+최종 기본 `pytest` 실행에서 467개가 47.11초에 통과했다. 데이터 복원 검사2개와 GPU 잠금 검사1개를 포함한 수치이며, 기존 Node API 검사5개도 통과했다. 외부 원본9파일·변환 split12파일·기존 데이터6파일의 해시를 실제 대조했다. 자동 필터가 만든 실험 내 대화 그룹은 train/validation/test 간 겹치지 않는다. Git 추적 파일의 실제 로컬 비밀값 검사 결과는 0건이었다.
+
+Clone 내부 캐시와 임시 PR 생성 스크립트, 학습 전 실패한 데이터 준비 초안만 정리했다. 원본·Baseline·선택 모델 및 새 실험 체크포인트는 유지했다. 캐시는 이후 테스트 실행으로 다시 생성될 수 있다.
+
+## 고정 개발 사례 비교
+
+각 모델에 같은 사례16개를 전달해 총80응답을 실제 생성했다. 문맥 hash·seed·생성 설정을 통일했고 모델별 실제 어댑터로 분류6건씩 총30건도 생성했다. 원시 응답과 프롬프트는 `experiments/results/dialogue-suite-fixed.json`에 있다. 외부 시험 원문은 이 공개 파일에 포함하지 않았다.
+
+| 모델 | fallback / 16 | 질문 포함 / 16 | 분류 참조와 완전 일치 / 6 |
+|---|---:|---:|---:|
+| Baseline | 0 | 2 | 4 |
+| Tone V1 | 0 | 2 | 4 |
+| Emotion V2 | 0 | 4 | 5 |
+| Mixed V3 | 0 | 2 | 4 |
+| Multi-turn V4 | 0 | 5 | 4 |
+
+위 분류 참조는 에이전트가 작성했고 사람 검증은 하지 않았다. 특히 명시적 제안이 없는 관계 부정 발화의 `acceptance` 참조는 해석이 모호하다. 따라서 일치수를 검증된 정확도로 해석하지 않는다. 실제 필드 이름은 `analysis_confidence`이며, 캐릭터 장기 성격의 `confidence`와 구분한다.
+
+대화에서는 네 후보 모두 개선을 입증하지 못했다. Tone/Mixed는 말다툼의 경위를 모르는 상태에서 사용자 잘못이 아니라고 단정했다. Emotion은 친구의 의도를 추측하고 무시하라고 권했다. Multi-turn은 친구를 탓하고 메일을 오래 쓴 이유를 잠들었기 때문이라고 추측했다. 높은 Affinity 사례의 표현은 어색했고, 상세 설명 요청에서도 설명이 부족했다. 질문 감소나 작은 검증 손실만으로 이를 채택하지 않는다. Baseline에도 같은 종류의 문제가 남아 있어 운영 승인 모델로 취급하지 않는다.
+
+## 별도 시험과 최종 판정
+
+학습에 사용하지 않은 일상2·감정2·멀티턴2·별도 Memory2 사례를 다섯 모델에 전달해 총40응답을 실제 생성하고, 분류2건씩 총10건도 검사했다. 외부 시험의 원시 문장·응답은 `runs/dialogue-heldout-20261010.json`에만 보관한다. 공개 파일 `experiments/results/dialogue-heldout-summary.json`에는 집계값과 데이터 hash만 있다.
+
+| 모델 | 첫 시도 출력 계약 통과 / 8 | fallback / 8 | Memory 근거 ID 및 내용 / 2 | 분류 참조 일치 / 2 |
+|---|---:|---:|---:|---:|
+| Baseline | 6 | 0 | 2 | 1 |
+| Tone V1 | 8 | 0 | 2 | 1 |
+| Emotion V2 | 7 | 0 | 2 | 1 |
+| Mixed V3 | 8 | 0 | 2 | 1 |
+| Multi-turn V4 | 6 | 1 | 2 | 1 |
+
+Memory2사례의 통과만으로 일반 정확성을 입증하지 않는다. 첫 시도에서 실패한 출력은 기존 수정 절차를 거치며, fallback 수도 함께 표시했다. 분류 참조는 위와 같은 미검수 한계가 있다. 사람 평가 점수는 자동으로 작성하지 않았다.
+
+네 학습 후보는 모두 **Rejected**, 선택 모델은 **baseline-expanded**로 유지했다. 새 어댑터를 기본 serving에 적용하지 않았고, Rejected 가중치도 삭제하지 않았다. UI에서는 Rejected를 포함한 비교가 가능하다. 개별 결과와 판정 이유는 `experiments/results/<ID>-evaluation.json`에서 확인한다.
+
+남은 문제는 근거 없는 감정·잘잘못 추정, 높은 Affinity에서의 표현 일관성, 상세 요청에 비해 짧은 응답이다. 소규모·짧은 대화 위주의 데이터 편향과 분석 참조의 모호함도 확인했다. 다음 학습에는 사람 검수와 균형 잡힌 장단문·성격 조건 자료가 필요하다. 이번 결과로 자연스러움 개선이나 운영 적합성을 입증했다고 주장하지 않는다.

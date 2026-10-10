@@ -1,0 +1,69 @@
+{
+  "git_commit": "d04c50764eb5991cfb3ad5793ff57bedd7d201ac",
+  "test_sha256": {
+    "tone-v1": "c38c090959633a2bcf73c363e92d1e0e8271da554f99c438e86f20ffd9822288",
+    "emotion-v2": "58469480f46f374e58e6c53f622a277ef37f4209dbf1d06a61b409464df5fee7",
+    "multiturn-v4": "9fe8c3f3eb2637857662ad30374892f65663b24df5b5456c62e1bf691cd2c037"
+  },
+  "actual_qwen": true,
+  "human_review": false,
+  "independent_benchmark": false,
+  "raw_results_local": "runs/dialogue-heldout-20261010.json",
+  "models": {
+    "baseline-expanded": {
+      "conversation_count": 8,
+      "fallbacks": 0,
+      "raw_json_valid": 6,
+      "memory_case_count": 2,
+      "memory_ids_exact": 2,
+      "memory_terms_supported": 2,
+      "analysis_count": 2,
+      "analysis_exact_matches": 1,
+      "analysis_json_valid": 2
+    },
+    "tone-v1": {
+      "conversation_count": 8,
+      "fallbacks": 0,
+      "raw_json_valid": 8,
+      "memory_case_count": 2,
+      "memory_ids_exact": 2,
+      "memory_terms_supported": 2,
+      "analysis_count": 2,
+      "analysis_exact_matches": 1,
+      "analysis_json_valid": 2
+    },
+    "emotion-v2": {
+      "conversation_count": 8,
+      "fallbacks": 0,
+      "raw_json_valid": 7,
+      "memory_case_count": 2,
+      "memory_ids_exact": 2,
+      "memory_terms_supported": 2,
+      "analysis_count": 2,
+      "analysis_exact_matches": 1,
+      "analysis_json_valid": 2
+    },
+    "mixed-v3": {
+      "conversation_count": 8,
+      "fallbacks": 0,
+      "raw_json_valid": 8,
+      "memory_case_count": 2,
+      "memory_ids_exact": 2,
+      "memory_terms_supported": 2,
+      "analysis_count": 2,
+      "analysis_exact_matches": 1,
+      "analysis_json_valid": 2
+    },
+    "multiturn-v4": {
+      "conversation_count": 8,
+      "fallbacks": 1,
+      "raw_json_valid": 6,
+      "memory_case_count": 2,
+      "memory_ids_exact": 2,
+      "memory_terms_supported": 2,
+      "analysis_count": 2,
+      "analysis_exact_matches": 1,
+      "analysis_json_valid": 2
+    }
+  }
+}

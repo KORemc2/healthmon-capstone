@@ -29,9 +29,13 @@
   "checkpoint_path": "runs/dialogue-mixed-v3-20261010/checkpoint-epoch-1",
   "human_review": false,
   "production_approved": false,
-  "model_status": "Candidate",
+  "model_status": "Rejected",
   "data_and_weights_publication": "local_only_noncommercial_research",
   "training_git_commit": "6abb9acbb85a486a08b734e5b46f609428036066",
-  "evaluation_status": "pending",
-  "elapsed_seconds": 265.29033398628235
+  "evaluation_status": "completed_development_and_local_holdout",
+  "elapsed_seconds": 265.29033398628235,
+  "decision": "Unsupported absolution; awkward high-affinity expression and insufficient requested detail.",
+  "adapter_sha256": "d5ce6db5cec18640e0b82e87cff25a894001be9bfec1484cfc8b032311a55e53",
+  "evaluation_path": "experiments/results/mixed-v3-evaluation.json",
+  "automatic_promotion": false
 }

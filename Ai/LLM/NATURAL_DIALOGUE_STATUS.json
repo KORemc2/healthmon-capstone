@@ -14,25 +14,105 @@
   "production_approved": false,
   "human_review": false,
   "experiments": {
-    "natural-v1": {"training_executed": false, "evaluation_cases": 16, "status": "Rejected"},
-    "natural-v2-smoke": {"training_executed": true, "epochs": 1, "optimizer_updates": 2, "train_count": 16, "validation_count": 4, "evaluation_cases": 16, "status": "Rejected"},
-    "natural-v3": {"training_executed": false, "evaluation_executed": false, "status": "planned"}
+    "natural-v1": {
+      "training_executed": false,
+      "evaluation_cases": 16,
+      "status": "Rejected"
+    },
+    "natural-v2-smoke": {
+      "training_executed": true,
+      "epochs": 1,
+      "optimizer_updates": 2,
+      "train_count": 16,
+      "validation_count": 4,
+      "evaluation_cases": 16,
+      "status": "Rejected"
+    },
+    "natural-v3": {
+      "training_executed": false,
+      "evaluation_executed": false,
+      "status": "planned"
+    },
+    "tone-v1": {
+      "training_executed": true,
+      "epochs": 1,
+      "optimizer_updates": 5,
+      "train_count": 40,
+      "validation_count": 8,
+      "fixed_evaluation_cases": 16,
+      "heldout_evaluation_cases": 8,
+      "status": "Rejected",
+      "checkpoint_path": "runs/dialogue-tone-v1-20261010/checkpoint-epoch-1",
+      "training_git_commit": "95d439770ec4541a54086d171e00d45f7e1cfbb4"
+    },
+    "emotion-v2": {
+      "training_executed": true,
+      "epochs": 1,
+      "optimizer_updates": 5,
+      "train_count": 40,
+      "validation_count": 8,
+      "fixed_evaluation_cases": 16,
+      "heldout_evaluation_cases": 8,
+      "status": "Rejected",
+      "checkpoint_path": "runs/dialogue-emotion-v2-20261010/checkpoint-epoch-1",
+      "training_git_commit": "58598affd19726c7b4135ce14207bdd5eb10cacb"
+    },
+    "mixed-v3": {
+      "training_executed": true,
+      "epochs": 1,
+      "optimizer_updates": 5,
+      "train_count": 40,
+      "validation_count": 8,
+      "fixed_evaluation_cases": 16,
+      "heldout_evaluation_cases": 8,
+      "status": "Rejected",
+      "checkpoint_path": "runs/dialogue-mixed-v3-20261010/checkpoint-epoch-1",
+      "training_git_commit": "6abb9acbb85a486a08b734e5b46f609428036066"
+    },
+    "multiturn-v4": {
+      "training_executed": true,
+      "epochs": 1,
+      "optimizer_updates": 5,
+      "train_count": 40,
+      "validation_count": 8,
+      "fixed_evaluation_cases": 16,
+      "heldout_evaluation_cases": 8,
+      "status": "Rejected",
+      "checkpoint_path": "runs/dialogue-multiturn-v4-20261010/checkpoint-epoch-1",
+      "training_git_commit": "2b32771436d28ecd2cec3a63f6ad22172548fefd"
+    }
   },
   "verification": {
-    "python_integration_tests_passed": 456,
+    "python_integration_tests_passed": 464,
     "separate_gpu_lock_test_passed": 1,
     "node_api_tests_passed": 5,
     "dataset_files_sha256_verified": 6,
     "browser_actual_model_comparison_passed": true,
-    "secret_scan_hits": 0
+    "secret_scan_hits": 0,
+    "additional_source_cache_tests_passed": 2,
+    "external_raw_files_sha256_verified": 9,
+    "external_derived_split_files_sha256_verified": 12,
+    "actual_fixed_responses": 80,
+    "actual_fixed_analysis_checks": 30,
+    "actual_heldout_responses": 40,
+    "actual_heldout_analysis_checks": 10
   },
   "github_write_policy": "fork_only_until_explicit_user_request",
-  "configured_remotes": ["origin"],
-  "upstream_pr": {"number": 2, "state": "closed", "merged": false, "closed_at": "2026-10-10T09:10:00Z"},
+  "configured_remotes": [
+    "origin"
+  ],
+  "upstream_pr": {
+    "number": 2,
+    "state": "closed",
+    "merged": false,
+    "closed_at": "2026-10-10T09:10:00Z"
+  },
   "automatic_merge": false,
   "upstream_direct_push": false,
   "deleted_models": [],
   "deleted_original_datasets": [],
   "cleanup": "Four Clone cache directories and temporary PR helper removed; baseline files untouched.",
-  "lab_url": "http://127.0.0.1:8002/"
+  "lab_url": "http://127.0.0.1:8002/",
+  "latest_report": "docs/EXTERNAL_DIALOGUE_EXPERIMENTS.md",
+  "upstream_pr_creation_deferred": true
 }

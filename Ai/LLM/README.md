@@ -6,7 +6,10 @@
 
 ```powershell
 git clone --branch feat/llm-natural-dialogue https://github.com/KORemc2/healthmon-capstone.git HEALTHMON
-Set-Location HEALTHMON\Ai\LLM
+Set-Location HEALTHMON
+git config core.hooksPath .githooks
+git config remote.pushDefault origin
+Set-Location Ai\LLM
 ```
 
 V1–V4 독립 실험의 자료 출처·실행 조건은 [한국어 대화 실험 기록](docs/EXTERNAL_DIALOGUE_EXPERIMENTS.md)에 있습니다. 외부 원문·변환 데이터·가중치는 로컬 연구용으로 보관합니다.

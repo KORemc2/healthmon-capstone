@@ -29,9 +29,13 @@
   "checkpoint_path": "runs/dialogue-multiturn-v4-20261010/checkpoint-epoch-1",
   "human_review": false,
   "production_approved": false,
-  "model_status": "Candidate",
+  "model_status": "Rejected",
   "data_and_weights_publication": "local_only_noncommercial_research",
   "training_git_commit": "2b32771436d28ecd2cec3a63f6ad22172548fefd",
-  "evaluation_status": "pending",
-  "elapsed_seconds": 291.2506136894226
+  "evaluation_status": "completed_development_and_local_holdout",
+  "elapsed_seconds": 291.2506136894226,
+  "decision": "Unsupported blame and sleep assumption; additional held-out fallback and more unnecessary questions.",
+  "adapter_sha256": "7a1c0ed47667ab490e1278477dddcad55a4184797568a99f983ecc1a46f1839f",
+  "evaluation_path": "experiments/results/multiturn-v4-evaluation.json",
+  "automatic_promotion": false
 }

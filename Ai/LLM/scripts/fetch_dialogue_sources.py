@@ -32,7 +32,9 @@ def main():
         cached=json.loads(manifest_path.read_text(encoding='utf-8'))
         files=[f for source in cached['sources'] for f in source['files']]
         for item in files:
-            if hashlib.sha256((ROOT/item['file']).read_bytes()).hexdigest()!=item['sha256']:
+            target=ROOT/item['file']
+            if not target.exists():save(target.parent,target.name,item['url'])
+            if hashlib.sha256(target.read_bytes()).hexdigest()!=item['sha256']:
                 raise RuntimeError('Pinned local source changed; preserve it and use a new version')
         print(json.dumps({'pinned_manifest_reused':True,'sha256_verified_files':len(files)}))
         return

@@ -29,9 +29,13 @@
   "checkpoint_path": "runs/dialogue-emotion-v2-20261010/checkpoint-epoch-1",
   "human_review": false,
   "production_approved": false,
-  "model_status": "Candidate",
+  "model_status": "Rejected",
   "data_and_weights_publication": "local_only_noncommercial_research",
   "training_git_commit": "58598affd19726c7b4135ce14207bdd5eb10cacb",
-  "evaluation_status": "pending",
-  "elapsed_seconds": 246.78066849708557
+  "evaluation_status": "completed_development_and_local_holdout",
+  "elapsed_seconds": 246.78066849708557,
+  "decision": "Unsupported inference about friend and dismissive advice; more unnecessary questions; no overall improvement.",
+  "adapter_sha256": "d68dae292d21a8e9b2db8eb774051e904b2b4b2623feb67d77f3927126b1b444",
+  "evaluation_path": "experiments/results/emotion-v2-evaluation.json",
+  "automatic_promotion": false
 }
