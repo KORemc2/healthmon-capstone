@@ -6,12 +6,30 @@
   "base_revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
   "initial_adapter": "runs/expanded-20260929/checkpoint-epoch-1",
   "dataset_version": "natural_sft_v1",
-  "data_composition": {"authored_natural_train": 12, "retained_personality_train": 4, "validation": 4},
+  "data_composition": {
+    "authored_natural_train": 12,
+    "retained_personality_train": 4,
+    "validation": 4
+  },
   "prompt_profile": "natural-v1",
-  "hyperparameters": {"epochs": 1, "rank": 8, "alpha": 32, "learning_rate": 0.00002, "batch_size": 1, "gradient_accumulation": 8, "max_length": 1536, "seed": 42},
+  "hyperparameters": {
+    "epochs": 1,
+    "rank": 8,
+    "alpha": 32,
+    "learning_rate": 2e-05,
+    "batch_size": 1,
+    "gradient_accumulation": 8,
+    "max_length": 1536,
+    "seed": 42
+  },
   "output_path": "runs/natural-v2-smoke-20261010",
-  "training_status": "pending",
+  "training_status": "completed",
   "human_review": false,
   "production_approved": false,
-  "decision": "pending_actual_training_and_evaluation"
+  "decision": "Candidate: human dialogue review required",
+  "training_git_commit": "6c6484c6368c76b066715ca44d2335f1b8aeb080",
+  "actual_optimizer_steps": 2,
+  "validation_loss": 0.38715720549225807,
+  "reloaded_validation_loss": 0.38715720549225807,
+  "evaluation_status": "pending"
 }

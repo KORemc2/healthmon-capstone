@@ -1,0 +1,247 @@
+{
+  "config": {
+    "framework": "transformers+peft",
+    "model": {
+      "repo": "Qwen/Qwen3.5-9B",
+      "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+      "path": "E:\\qwen-llm\\models\\qwen3.5-9b"
+    },
+    "bf16": true,
+    "quantization": null,
+    "rank": 8,
+    "alpha": 32,
+    "batch": 1,
+    "grad_accum": 8,
+    "lr": 2e-05,
+    "epochs": 1,
+    "max_length": 1536,
+    "trainable": 21639168,
+    "data_manifest": {
+      "version": "natural_sft_v1",
+      "source": "16 individually authored synthetic additions; 4 retained pilot personality examples",
+      "counts": {
+        "train": 16,
+        "validation": 4
+      },
+      "human_review": false,
+      "external_data_count": 0,
+      "paid_api_used": false,
+      "training_scope": "small feasibility run, no production selection",
+      "retained_source": "data/pilot_v2/train.jsonl",
+      "sha256": {
+        "train.jsonl": "3d61d54466c0de8c9fb9769872e435bd6dec39e45d4ace55615c07e249b33ee6",
+        "validation.jsonl": "0ca03fd4dde56fd0580ea7e5c8166bea1db99ba570dd1121217b969a6cb757dc"
+      }
+    },
+    "smoke": false,
+    "data": "data/natural_sft_v1",
+    "init_adapter": "runs/expanded-20260929/checkpoint-epoch-1",
+    "runtime_guidance": true,
+    "shuffle_seed": 42,
+    "prompt_profile": "natural-v1",
+    "git_commit": "6c6484c6368c76b066715ca44d2335f1b8aeb080",
+    "base_revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a"
+  },
+  "events": [
+    {
+      "event": "load_start",
+      "time": 1791622514.3491323,
+      "train_count": 16,
+      "validation_count": 4
+    },
+    {
+      "event": "loaded",
+      "time": 1791622536.2981231,
+      "trainable": 21639168,
+      "allocated_gib": 17.607831478118896
+    },
+    {
+      "event": "backward",
+      "time": 1791622546.7379975,
+      "epoch": 1,
+      "sample": 1,
+      "loss": 1.0901519060134888,
+      "peak_allocated_gib": 22.097538948059082,
+      "peak_reserved_gib": 22.65625,
+      "device_used_total_mib": "24290, 24576"
+    },
+    {
+      "event": "backward",
+      "time": 1791622551.387645,
+      "epoch": 1,
+      "sample": 2,
+      "loss": 1.5112735033035278,
+      "peak_allocated_gib": 22.18097496032715,
+      "peak_reserved_gib": 22.65625,
+      "device_used_total_mib": "24057, 24576"
+    },
+    {
+      "event": "backward",
+      "time": 1791622555.5286567,
+      "epoch": 1,
+      "sample": 3,
+      "loss": 0.4530928134918213,
+      "peak_allocated_gib": 22.18097496032715,
+      "peak_reserved_gib": 22.65625,
+      "device_used_total_mib": "24045, 24576"
+    },
+    {
+      "event": "backward",
+      "time": 1791622559.340533,
+      "epoch": 1,
+      "sample": 4,
+      "loss": 0.4055441915988922,
+      "peak_allocated_gib": 22.18097496032715,
+      "peak_reserved_gib": 22.65625,
+      "device_used_total_mib": "24066, 24576"
+    },
+    {
+      "event": "backward",
+      "time": 1791622563.1825283,
+      "epoch": 1,
+      "sample": 5,
+      "loss": 0.18732519447803497,
+      "peak_allocated_gib": 22.18097496032715,
+      "peak_reserved_gib": 22.65625,
+      "device_used_total_mib": "24126, 24576"
+    },
+    {
+      "event": "backward",
+      "time": 1791622567.459775,
+      "epoch": 1,
+      "sample": 6,
+      "loss": 0.5390415787696838,
+      "peak_allocated_gib": 22.21530055999756,
+      "peak_reserved_gib": 22.6953125,
+      "device_used_total_mib": "23997, 24576"
+    },
+    {
+      "event": "backward",
+      "time": 1791622571.2882612,
+      "epoch": 1,
+      "sample": 7,
+      "loss": 0.2097814828157425,
+      "peak_allocated_gib": 22.21530055999756,
+      "peak_reserved_gib": 22.6953125,
+      "device_used_total_mib": "24081, 24576"
+    },
+    {
+      "event": "backward",
+      "time": 1791622575.8786395,
+      "epoch": 1,
+      "sample": 8,
+      "loss": 1.5489720106124878,
+      "peak_allocated_gib": 22.254413604736328,
+      "peak_reserved_gib": 22.740234375,
+      "device_used_total_mib": "23979, 24576"
+    },
+    {
+      "event": "optimizer_update",
+      "time": 1791622576.058216,
+      "step": 1,
+      "gradient_norm": 2.087120771408081
+    },
+    {
+      "event": "backward",
+      "time": 1791622579.8747454,
+      "epoch": 1,
+      "sample": 9,
+      "loss": 1.1722080707550049,
+      "peak_allocated_gib": 22.254413604736328,
+      "peak_reserved_gib": 22.88671875,
+      "device_used_total_mib": "24121, 24576"
+    },
+    {
+      "event": "backward",
+      "time": 1791622583.6217449,
+      "epoch": 1,
+      "sample": 10,
+      "loss": 0.6511799097061157,
+      "peak_allocated_gib": 22.254413604736328,
+      "peak_reserved_gib": 22.88671875,
+      "device_used_total_mib": "24123, 24576"
+    },
+    {
+      "event": "backward",
+      "time": 1791622587.5372753,
+      "epoch": 1,
+      "sample": 11,
+      "loss": 0.5205067992210388,
+      "peak_allocated_gib": 22.30551815032959,
+      "peak_reserved_gib": 22.88671875,
+      "device_used_total_mib": "24011, 24576"
+    },
+    {
+      "event": "backward",
+      "time": 1791622593.417072,
+      "epoch": 1,
+      "sample": 12,
+      "loss": 0.1473102569580078,
+      "peak_allocated_gib": 22.356182098388672,
+      "peak_reserved_gib": 22.88671875,
+      "device_used_total_mib": "23958, 24576"
+    },
+    {
+      "event": "backward",
+      "time": 1791622599.2241054,
+      "epoch": 1,
+      "sample": 13,
+      "loss": 0.21589037775993347,
+      "peak_allocated_gib": 22.36191749572754,
+      "peak_reserved_gib": 22.88671875,
+      "device_used_total_mib": "23958, 24576"
+    },
+    {
+      "event": "backward",
+      "time": 1791622603.3501136,
+      "epoch": 1,
+      "sample": 14,
+      "loss": 0.15829023718833923,
+      "peak_allocated_gib": 22.36191749572754,
+      "peak_reserved_gib": 22.88671875,
+      "device_used_total_mib": "24031, 24576"
+    },
+    {
+      "event": "backward",
+      "time": 1791622607.4032679,
+      "epoch": 1,
+      "sample": 15,
+      "loss": 0.9973913431167603,
+      "peak_allocated_gib": 22.36191749572754,
+      "peak_reserved_gib": 22.88671875,
+      "device_used_total_mib": "24036, 24576"
+    },
+    {
+      "event": "backward",
+      "time": 1791622611.1838171,
+      "epoch": 1,
+      "sample": 16,
+      "loss": 0.44545605778694153,
+      "peak_allocated_gib": 22.36191749572754,
+      "peak_reserved_gib": 22.88671875,
+      "device_used_total_mib": "24120, 24576"
+    },
+    {
+      "event": "optimizer_update",
+      "time": 1791622611.236818,
+      "step": 2,
+      "gradient_norm": 2.113173246383667
+    },
+    {
+      "event": "validation",
+      "time": 1791622615.2530088,
+      "epoch": 1,
+      "loss": 0.38715720549225807,
+      "checkpoint": "E:\\qwen-llm\\HEALTHMON\\Ai\\LLM\\runs\\natural-v2-smoke-20261010\\checkpoint-epoch-1"
+    },
+    {
+      "event": "complete",
+      "time": 1791622619.2761073,
+      "optimizer_steps": 2,
+      "reload_validation_loss": 0.38715720549225807,
+      "peak_allocated_gib": 22.36191749572754,
+      "peak_reserved_gib": 22.88671875
+    }
+  ],
+  "scope": "16 training rows, 4 validation rows, 1 epoch, 2 optimizer updates; feasibility only"
+}

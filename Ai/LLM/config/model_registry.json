@@ -23,6 +23,17 @@
       "decision": "Prompt-only change did not establish overall improvement; distress response assumes fault and some Korean remains awkward.",
       "evaluation_path": "experiments/results/natural-v1.json",
       "compatibility_passed": true
+    },
+    "natural-v2-smoke": {
+      "status": "Candidate",
+      "adapter_path": "runs/natural-v2-smoke-20261010/checkpoint-epoch-1",
+      "prompt_profile": "natural-v1",
+      "training_status": "completed",
+      "dataset_version": "natural_sft_v1",
+      "training_git_commit": "6c6484c6368c76b066715ca44d2335f1b8aeb080",
+      "human_review": false,
+      "production_approved": false,
+      "note": "Tiny feasibility run. Legacy prompt SFT; Character Lab transfer is unverified until dialogue evaluation."
     }
   }
 }
