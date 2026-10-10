@@ -72,7 +72,7 @@
     },
     "repair-v5": {
       "training_executed": true,
-      "training_status": "running",
+      "training_status": "completed",
       "epochs_planned": 2,
       "optimizer_updates_planned": 426,
       "train_count": 851,
@@ -83,9 +83,18 @@
       "initialization": "clean_pinned_base",
       "run": "runs/dialogue-repair-v5-20261010",
       "metadata_path": "experiments/repair-v5.json",
-      "training_git_commit": "2d80be4",
+      "training_git_commit": "2d80be40717f427f4a7322a578d42028fc6619c6",
       "human_review": false,
-      "production_approved": false
+      "production_approved": false,
+      "epochs": 2,
+      "optimizer_updates": 426,
+      "checkpoint_path": "runs/dialogue-repair-v5-20261010/checkpoint-epoch-2",
+      "adapter_sha256": "233072a757dd6154553840e85122a4259b5a9435934ae191749af2a20f5f10e3",
+      "evaluation_status": "completed_development_and_local_holdout",
+      "status": "Candidate",
+      "agent_review": "completed_no_overall_improvement_established",
+      "evaluation_report": "docs/DIALOGUE_REPAIR.md",
+      "compatibility_passed": false
     },
     "multiturn-v4": {
       "training_executed": true,
@@ -115,7 +124,9 @@
     "prompt_fact_projection_targeted_tests_passed": 15,
     "source_cache_tests_included": 2,
     "gpu_lock_test_included": 1,
-    "full_suite_seconds": 48.79
+    "full_suite_seconds": 48.79,
+    "repair_v5_character_generations": 165,
+    "repair_v5_analyzer_checks": 18
   },
   "github_write_policy": "fork_only_until_explicit_user_request",
   "configured_remotes": [

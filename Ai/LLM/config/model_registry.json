@@ -110,6 +110,35 @@
       "decision": "Unsupported blame and sleep assumption; additional held-out fallback and more unnecessary questions.",
       "evaluation_path": "experiments/results/multiturn-v4-evaluation.json",
       "structural_checks_recorded": true
+    },
+    "baseline-prompt-v2": {
+      "status": "Candidate",
+      "adapter_path": "runs/expanded-20260929/checkpoint-epoch-1",
+      "prompt_profile": "natural-v2",
+      "training_status": "not_required",
+      "human_review": false,
+      "production_approved": false,
+      "compatibility_passed": false,
+      "note": "Prompt-only control using preserved baseline weights; no new training",
+      "evaluation_status": "completed_development_and_local_holdout",
+      "evaluation_path": "experiments/results/repair-v5-fixed.json",
+      "decision": "No overall improvement established; retained for comparison, not promoted."
+    },
+    "repair-v5": {
+      "status": "Candidate",
+      "adapter_path": "runs/dialogue-repair-v5-20261010/checkpoint-epoch-2",
+      "adapter_sha256": "233072a757dd6154553840e85122a4259b5a9435934ae191749af2a20f5f10e3",
+      "prompt_profile": "natural-v2",
+      "training_status": "completed",
+      "dataset_version": "dialogue_repair_v8",
+      "training_git_commit": "2d80be40717f427f4a7322a578d42028fc6619c6",
+      "human_review": false,
+      "production_approved": false,
+      "compatibility_passed": false,
+      "note": "Independent clean-base NF4 LoRA; 851 rows, rank16. Evaluated: fallback/Analyzer regressions and weak personality separation remain. See docs/DIALOGUE_REPAIR.md.",
+      "evaluation_status": "completed_development_and_local_holdout",
+      "evaluation_path": "experiments/results/repair-v5-fixed.json",
+      "decision": "No overall improvement established; retained for comparison, not promoted."
     }
   }
 }

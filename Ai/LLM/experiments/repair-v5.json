@@ -1,7 +1,7 @@
 {
   "experiment_id": "repair-v5",
   "branch": "exp/llm/repair-v5",
-  "training_status": "running",
+  "training_status": "completed",
   "run": "dialogue-repair-v5-20261010",
   "init_adapter": null,
   "initialization": "clean pinned Qwen3.5-9B; no prior adapter to avoid inheriting the short-answer regression",
@@ -135,5 +135,33 @@
   },
   "human_review": false,
   "production_approved": false,
-  "automatic_selection": false
+  "automatic_selection": false,
+  "training_git_commit": "2d80be40717f427f4a7322a578d42028fc6619c6",
+  "optimizer_steps": 426,
+  "completed_epochs": 2,
+  "trainable_parameters": 43278336,
+  "peak_allocated_gib": 17.564085483551025,
+  "peak_reserved_gib": 17.91796875,
+  "reload_validation_loss": 1.294264486420434,
+  "epoch_metrics": [
+    {
+      "epoch": 1,
+      "train_microbatch_count": 426,
+      "train_microbatch_mean_loss": 1.1845873104487086,
+      "validation_mean_loss": 1.2951634003780783,
+      "checkpoint": "runs/dialogue-repair-v5-20261010/checkpoint-epoch-1",
+      "adapter_sha256": "6ebc7d5a399cd4654c40fe5c76d20c5329df4d76ddfb21beba1eff2842e6da19"
+    },
+    {
+      "epoch": 2,
+      "train_microbatch_count": 426,
+      "train_microbatch_mean_loss": 0.7436289949049657,
+      "validation_mean_loss": 1.294264486420434,
+      "checkpoint": "runs/dialogue-repair-v5-20261010/checkpoint-epoch-2",
+      "adapter_sha256": "233072a757dd6154553840e85122a4259b5a9435934ae191749af2a20f5f10e3"
+    }
+  ],
+  "selected_checkpoint": "runs/dialogue-repair-v5-20261010/checkpoint-epoch-2",
+  "selected_adapter_sha256": "233072a757dd6154553840e85122a4259b5a9435934ae191749af2a20f5f10e3",
+  "checkpoint_selection_basis": "Minimum validation loss; no model promotion or dialogue-quality conclusion"
 }

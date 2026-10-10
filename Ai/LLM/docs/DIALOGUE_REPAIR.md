@@ -42,4 +42,26 @@ Official implementation references: [Transformers bitsandbytes](https://huggingf
 
 The final configuration passed a separate eight-row sanity run using the longest training examples, batch size 2, rank 16 and speech loss weight 3. It saved and reloaded the adapter with identical validation loss; peak allocated memory was 17.62 GiB. The full run starts independently from the clean pinned base, uses NF4 double quantization, and schedules two epochs / 426 optimizer updates. The earlier baseline and all four rejected adapters remain intact.
 
-Current stage: full training is running. Completion will trigger serial baseline / same-prompt baseline / new-adapter regression checks, followed by three-turn conversations, individual personality-axis probes and a frozen local holdout. Full training and evaluation results will be appended only after they actually finish.
+Full training completed on 2026-10-10 with 426 optimizer updates and both epoch checkpoints preserved. Validation loss was 1.2951634 after epoch 1 and 1.2942645 after epoch 2. Epoch 2 was selected by the lower validation loss and reloaded with the same loss. The difference is small and does not establish dialogue quality. Peak allocated GPU memory was 17.56 GiB. The training source commit is `2d80be40717f427f4a7322a578d42028fc6619c6`; the selected adapter SHA256 is recorded in `experiments/repair-v5.json`.
+
+## Completed comparison and remaining failures
+
+Three configurations were evaluated: preserved baseline, preserved baseline with `natural-v2`, and the new LoRA with `natural-v2`. There are 48 fixed Character generations, 63 personality/multi-turn generations, 36 local held-out generations and 18 additional-seed generations (165 Character generations total), plus 18 Analyzer checks. First-turn comparisons share context and seed; follow-ups use each model's own preceding answers. These are development examples, not an independent benchmark or human ratings.
+
+| Check | Baseline | Baseline + new prompt | New LoRA + new prompt |
+| --- | ---: | ---: | ---: |
+| Fixed Character fallback responses / 16 | 0 | 0 | 1 |
+| Conversation/axis fallback responses / 21 | 0 | 0 | 0 |
+| Local held-out fallback responses / 12 | 0 | 0 | 2 |
+| Extra-seed fallback responses / 6 | 0 | 0 | 0 |
+| Analyzer exact matches to authored expectations / 6 | 4 | 4 | 3 |
+
+The Analyzer expectations are agent-authored; some acceptance/motivation labels are debatable. The match counts are not validated accuracy. The new Character-only adapter also changes Analyzer behavior: for `스쿼트 할 생각에 신나`, motivation changed from the baseline's `high` to `none`. It must not replace the Analyzer without further work.
+
+In the exercise recommendation conversation, baseline describes unperformed suggestions as completed: `1. 2분 스트레칭을 했어. 2. 집에서도 가벼운 어깨 동작으로 시작했어.` The new adapter instead lists actionable steps: `1. 책상 앞에 앉기 / 2. 어깨와 발목 살짝 움직이기 / 3. 통증 있으면 멈추기`. It also respects the tested request to stop exercise talk. These are specific improvements in examples, not proof of overall superiority.
+
+Remaining problems include weak personality separation (Activity 20 and 80 produce the identical new-adapter response), repetitive cup-related suggestions, shallow empathy (`왜 그런 일이 일어났어?`), and inconsistent recommendation behavior across seeds. On seed 20261012 it answers `운동 뭐 하지?` with `오늘은 편하게 쉬어도 돼.` Three fixed seeds do not establish a general refusal rate, even though `할 수 없어.` did not recur in the 27 conversation/axis/extra-seed responses for the new adapter.
+
+Overall improvement is **not established**. Both new configurations remain available as Candidates for inspection; the selected baseline is unchanged, compatibility has not passed, and there is no automatic promotion, human approval or upstream publication.
+
+Actual synthetic outputs are retained in `experiments/results/repair-v5-fixed.json`, `repair-v5-conversations.json` and `repair-v5-seed-checks.json`. `repair-v5-heldout-summary.json` contains only aggregate counts and hashes; restricted held-out source texts remain local. The local comparison UI is restored at `http://127.0.0.1:8002/`. Code, configuration, provenance and permitted evaluation evidence are published only to the owner's Fork; model weights and restricted training data remain local.

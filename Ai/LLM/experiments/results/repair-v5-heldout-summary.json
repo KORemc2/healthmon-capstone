@@ -1,0 +1,39 @@
+{
+  "test_sha256": "bf41fcd35a621d32be316b8836c9f091fb5bbc282a56d39fbca1b2df42740e36",
+  "generation": {
+    "seed": 20261012,
+    "max_new_tokens": 384,
+    "temperature": 0.7,
+    "top_p": 0.9,
+    "repetition_penalty": 1.05,
+    "max_time": 90
+  },
+  "actual_qwen": true,
+  "human_review": false,
+  "raw_results_local": "runs\\dialogue-repair-20261010\\repair-heldout.json",
+  "model_automatic_selection": false,
+  "case_count": 12,
+  "models": {
+    "baseline-expanded": {
+      "count": 12,
+      "fallbacks": 0,
+      "raw_first_pass": 11,
+      "memory_cases": 2,
+      "memory_ids_exact": 2
+    },
+    "baseline-prompt-v2": {
+      "count": 12,
+      "fallbacks": 0,
+      "raw_first_pass": 12,
+      "memory_cases": 2,
+      "memory_ids_exact": 2
+    },
+    "repair-v5": {
+      "count": 12,
+      "fallbacks": 2,
+      "raw_first_pass": 10,
+      "memory_cases": 2,
+      "memory_ids_exact": 2
+    }
+  }
+}
